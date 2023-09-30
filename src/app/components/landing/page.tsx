@@ -2,6 +2,7 @@
 import React from 'react';
 import KeyboardImg from "../../../../public/keyboard-cover.png";
 import RegistrationForm from '../registration/page';
+import Link from 'next/link';
 
 const Landing: React.FC = () => {
 
@@ -26,12 +27,11 @@ const Landing: React.FC = () => {
                 C benden tecladines duendescos
               </p>
               <div className="flex flex-col md:flex-row">
-                <a
-                  href="/keyboards"
+                <Link href="../pages/products"
                   className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
                 >
                   Explorar productos
-                </a>
+                </Link>
                 <a
                   href="/login"
                   className="border border-gray-400 hover:border-gray-500 text-gray-300 py-3 px-6 rounded-md mr-0 md:mr-4 mb-4 md:mb-0 font-bold text-lg transition duration-300 ease-in-out"
