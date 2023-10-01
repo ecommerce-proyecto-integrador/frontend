@@ -1,9 +1,9 @@
 import Link from "next/link";
 
-import Keyboard1Img from "../../../public/keyboard1.png";
-import Keyboard2Img from "../../../public/keyboard2.png";
-import Keyboard3Img from "../../../public/keyboard3.png";
-import Keyboard4Img from "../../../public/keyboard4.png";
+import Keyboard1Img from "../../../public/Placeholder.jpg";
+import Keyboard2Img from "../../../public/Placeholder.jpg";
+import Keyboard3Img from "../../../public/Placeholder.jpg";
+import Keyboard4Img from "../../../public/Placeholder.jpg";
 
 interface Product {
     id: number;
@@ -83,10 +83,9 @@ const Products: React.FC = () => {
             ))}
           </div>
           <div className="mt-8 flex justify-center">
-            <Link href="/products" legacyBehavior>
-              <a className="bg-black text-white py-2 px-4 rounded-lg shadow-md hover:bg-gray-900 transition-colors duration-300">
+            <Link href="../pages/products" 
+               className="bg-black text-white py-2 px-4 rounded-lg shadow-md hover:bg-gray-900 transition-colors duration-300">
                 View All
-              </a>
             </Link>
           </div>
         </div>

@@ -6,12 +6,12 @@ import { GrLinkedin } from "react-icons/gr";
 
 const Footer: React.FC = () => {
     return (
-        <footer className="bg-white border-t">
+        <footer className="md:container mx-auto bg-white border-t">
           <div className="mx-auto max-w-7xl px-4 py-4 flex justify-between items-center">
             <div className="flex items-center">
               <Link href="/" legacyBehavior>
                 <a className="text-2xl font-bold text-gray-900 cursor-pointer">
-                  Teclados ElMatoilalabero
+                  Placeholder
                 </a>
               </Link>
             </div>

@@ -14,10 +14,10 @@ const Features: React.FC = () => {
             <Box textAlign="center">
               <Keyboard sx={{ fontSize: 48, color: "indigo.500" }} />
               <Typography variant="h4" gutterBottom>
-                Mechanical Keys
+                Placeholder
               </Typography>
               <Typography variant="body1" color="textSecondary">
-                Enjoy a tactile typing experience with our high-quality mechanical keys.
+                Placeholder
               </Typography>
             </Box>
           </Grid>
@@ -25,10 +25,10 @@ const Features: React.FC = () => {
             <Box textAlign="center">
               <AutoFixHigh sx={{ fontSize: 48, color: "indigo.500" }} />
               <Typography variant="h4" gutterBottom>
-                Customizable RGB Lighting
+                Placeholder
               </Typography>
               <Typography variant="body1" color="textSecondary">
-                Personalize your keyboard with our customizable RGB lighting options.
+                Placeholder
               </Typography>
             </Box>
           </Grid>
@@ -36,10 +36,10 @@ const Features: React.FC = () => {
             <Box textAlign="center">
               <Lightbulb sx={{ fontSize: 48, color: "indigo.500" }} />
               <Typography variant="h4" gutterBottom>
-                Ergonomic Design
+                Placeholder
               </Typography>
               <Typography variant="body1" color="textSecondary">
-                Our keyboards are designed to provide maximum comfort and reduce strain on your hands and wrists.
+                Placeholder
               </Typography>
             </Box>
           </Grid>
@@ -47,10 +47,10 @@ const Features: React.FC = () => {
             <Box textAlign="center">
               <Language sx={{ fontSize: 48, color: "indigo.500" }} />
               <Typography variant="h4" gutterBottom>
-                Multiple Language Support
+                Placeholder
               </Typography>
               <Typography variant="body1" color="textSecondary">
-                Our keyboards support multiple languages, making them perfect for international users.
+                Placeholder
               </Typography>
             </Box>
           </Grid>

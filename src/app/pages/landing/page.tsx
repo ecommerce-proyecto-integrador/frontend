@@ -1,8 +1,10 @@
 'use client';
 import React from 'react';
-import KeyboardImg from "../../../../public/keyboard-cover.png";
+import KeyboardImg from "../../../../public/Placeholder.jpg";
 import RegistrationForm from '../../components/Registration';
 import Link from 'next/link';
+import Products from '../../components/Products';
+import Features from '../../components/Features';
 
 const Landing: React.FC = () => {
 
@@ -13,6 +15,7 @@ const Landing: React.FC = () => {
     };
 
     return (
+      <div>
       <section
         className="h-screen w-screen flex justify-center items-center bg-cover bg-center"
         style={{ backgroundImage: `url('${KeyboardImg.src}')` }}
@@ -21,10 +24,10 @@ const Landing: React.FC = () => {
           <div className="container mx-auto flex flex-col md:flex-row items-center justify-between text-white">
             <div className="w-full md:w-1/2 md:mr-8">
               <h2 className="text-4xl font-bold mb-4 text-cyan-500">
-                Tecladines
+                Placeholder
               </h2>
               <p className="text-gray-300 text-lg mb-6">
-                C benden tecladines duendescos
+                Se vender Placeholders
               </p>
               <div className="flex flex-col md:flex-row">
                 <Link href="../pages/products"
@@ -60,6 +63,9 @@ const Landing: React.FC = () => {
           </div>
         )}
       </section>
+      <Products />
+      <Features />
+      </div>
     );
     
 

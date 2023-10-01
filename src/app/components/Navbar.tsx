@@ -3,30 +3,30 @@ import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar: React.FC = () => {
     return (
-        <nav className="bg-white shadow-navbar h-16">
+        <nav className="md:container mx-auto bg-white shadow-navbar h-16">
         <div className="pl-10 pr-10 mx-auto px-4 h-full flex items-center justify-between">
           <Link href="../"
           className="flex-shrink-0 text-3xl font-bold text-gray-900 cursor-pointer">
-            Teclados ElMatoi
+            Placeholder
           </Link>
           <div className="flex-grow">
             <ul className="flex items-center justify-center space-x-10 text-lg">
               <li>
                 <Link href="../pages/products"
                 className="text-black font-semibold transition duration-300 ease-in-out hover:text-gray-500 hover:cursor-pointer">
-                  Teclados
+                  Placeholder
                 </Link>
               </li>
               <li>
                 <Link href="../pages/products" 
                 className="text-black font-semibold transition duration-300 ease-in-out hover:text-gray-500 hover:cursor-pointer">
-                  Teclas
+                  Placeholder
                 </Link>
               </li>
               <li>
                 <Link href="../pages/products"
                 className="text-black font-semibold transition duration-300 ease-in-out hover:text-gray-500 hover:cursor-pointer">
-                  Accesorios
+                  Placeholder
                 </Link>
               </li>
             </ul>
