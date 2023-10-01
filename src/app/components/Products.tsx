@@ -1,9 +1,9 @@
 import Link from "next/link";
 
-import Keyboard1Img from "../../../../public/keyboard1.png";
-import Keyboard2Img from "../../../../public/keyboard2.png";
-import Keyboard3Img from "../../../../public/keyboard3.png";
-import Keyboard4Img from "../../../../public/keyboard4.png";
+import Keyboard1Img from "../../../public/keyboard1.png";
+import Keyboard2Img from "../../../public/keyboard2.png";
+import Keyboard3Img from "../../../public/keyboard3.png";
+import Keyboard4Img from "../../../public/keyboard4.png";
 
 interface Product {
     id: number;

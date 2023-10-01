@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import KeyboardImg from "../../../../public/keyboard-cover.png";
-import RegistrationForm from '../registration/page';
+import RegistrationForm from '../../components/Registration';
 import Link from 'next/link';
 
 const Landing: React.FC = () => {
@@ -32,14 +32,16 @@ const Landing: React.FC = () => {
                 >
                   Explorar productos
                 </Link>
-                <a
-                  href="/login"
+                <button
+                  //falta meter la logica del login y como se abre el pop up
+                  //falta meter la logica de como se va a salir de el pop up
                   className="border border-gray-400 hover:border-gray-500 text-gray-300 py-3 px-6 rounded-md mr-0 md:mr-4 mb-4 md:mb-0 font-bold text-lg transition duration-300 ease-in-out"
                 >
                   Login
-                </a>
+                </button>
                 <button
                   onClick={() => setIsRegistrationOpen(true)} // Open registration form
+                  //falta meter la logica de como se va a salir de el pop up
                   className="border border-gray-400 hover:border-gray-500 text-gray-300 py-3 px-6 rounded-md font-bold text-lg transition duration-300 ease-in-out"
                 >
                   Register
@@ -54,10 +56,12 @@ const Landing: React.FC = () => {
               <RegistrationForm />
               <button onClick={() => setIsRegistrationOpen(false)}>Close</button>
             </div>
+
           </div>
         )}
       </section>
     );
+    
 
     }
 

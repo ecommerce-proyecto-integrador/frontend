@@ -5,32 +5,28 @@ const Navbar: React.FC = () => {
     return (
         <nav className="bg-white shadow-navbar h-16">
         <div className="pl-10 pr-10 mx-auto px-4 h-full flex items-center justify-between">
-          <Link href="/" legacyBehavior>
-            <a className="flex-shrink-0 text-3xl font-bold text-gray-900 cursor-pointer">
-              Teclados ElMatoi
-            </a>
+          <Link href="../"
+          className="flex-shrink-0 text-3xl font-bold text-gray-900 cursor-pointer">
+            Teclados ElMatoi
           </Link>
           <div className="flex-grow">
             <ul className="flex items-center justify-center space-x-10 text-lg">
               <li>
-                <Link href="/" legacyBehavior>
-                  <a className="text-black font-semibold transition duration-300 ease-in-out hover:text-gray-500 hover:cursor-pointer">
-                    Teclados
-                  </a>
+                <Link href="../pages/products"
+                className="text-black font-semibold transition duration-300 ease-in-out hover:text-gray-500 hover:cursor-pointer">
+                  Teclados
                 </Link>
               </li>
               <li>
-                <Link href="/" legacyBehavior>
-                  <a className="text-black font-semibold transition duration-300 ease-in-out hover:text-gray-500 hover:cursor-pointer">
-                    Teclas
-                  </a>
+                <Link href="../pages/products" 
+                className="text-black font-semibold transition duration-300 ease-in-out hover:text-gray-500 hover:cursor-pointer">
+                  Teclas
                 </Link>
               </li>
               <li>
-                <Link href="/" legacyBehavior>
-                  <a className="text-black font-semibold transition duration-300 ease-in-out hover:text-gray-500 hover:cursor-pointer">
-                    Accesorios
-                  </a>
+                <Link href="../pages/products"
+                className="text-black font-semibold transition duration-300 ease-in-out hover:text-gray-500 hover:cursor-pointer">
+                  Accesorios
                 </Link>
               </li>
             </ul>

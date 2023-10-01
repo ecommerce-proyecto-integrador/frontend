@@ -1,9 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/navbar/page';
-import Footer from '../components/footer/page';
 
-interface Product {
+interface Products {
     id: number;
     title: string;
     category: string;
@@ -12,7 +10,7 @@ interface Product {
   }
   
   const Products: React.FC = () => {
-    const [products, setProducts] = useState<Product[]>([]); // Annotate as an array of Product
+    const [products, setProducts] = useState<Products[]>([]); // Annotate as an array of Product
     const [categories, setCategories] = useState<string[]>([]); // Annotate as an array of string
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [selectedCategory, setSelectedCategory] = useState<string>('');
@@ -40,7 +38,6 @@ interface Product {
 
   return (
     <div className="container mx-auto mt-8">
-        <Navbar/>
       <h1 className="text-3xl font-semibold mb-4">Products</h1>
 
       {/* Search Bar */}
@@ -79,7 +76,6 @@ interface Product {
           </div>
         ))}
       </div>
-      <Footer/>
     </div>
   );
 };

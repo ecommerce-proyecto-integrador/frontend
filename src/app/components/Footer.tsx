@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
             <div className="flex items-center">
               <Link href="/" legacyBehavior>
                 <a className="text-2xl font-bold text-gray-900 cursor-pointer">
-                  Teclados ElMatoilablaberolab<span className="text-cyan">r</span>
+                  Teclados ElMatoilalabero
                 </a>
               </Link>
             </div>
