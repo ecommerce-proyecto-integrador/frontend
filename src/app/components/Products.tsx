@@ -15,37 +15,37 @@ interface Product {
 const products: Product[] = [
     {
         id: 1,
-        name: "Keyboard 1",
+        name: "Placeholder",
         imageSrc: Keyboard1Img.src,
         price: 99.99,
       },
       {
         id: 2,
-        name: "Keyboard 2",
+        name: "Placeholder",
         imageSrc: Keyboard2Img.src,
         price: 129.99,
       },
       {
         id: 3,
-        name: "Keyboard 3",
+        name: "Placeholder",
         imageSrc: Keyboard3Img.src,
         price: 79.99,
       },
       {
         id: 4,
-        name: "Keyboard 4",
+        name: "Placeholder",
         imageSrc: Keyboard2Img.src,
         price: 149.99,
       },
       {
         id: 5,
-        name: "Keyboard 5",
+        name: "Placeholder",
         imageSrc: Keyboard3Img.src,
         price: 119.99,
       },
       {
         id: 6,
-        name: "Keyboard 6",
+        name: "Placeholder",
         imageSrc: Keyboard4Img.src,
         price: 89.99,
       },
