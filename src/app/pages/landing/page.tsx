@@ -1,14 +1,16 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import KeyboardImg from "../../../../public/Placeholder.jpg";
 import RegistrationForm from '../../components/Registration';
+import Login from '../../components/Login';
 import Link from 'next/link';
 import Products from '../../components/Products';
 import Features from '../../components/Features';
 
 const Landing: React.FC = () => {
 
-    const [isRegistrationOpen, setIsRegistrationOpen] = React.useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isRegistrationOpen, setIsRegistrationOpen]=useState(false);
 
     const toggleRegistrationForm = () => {
       setIsRegistrationOpen(!isRegistrationOpen);
@@ -36,31 +38,51 @@ const Landing: React.FC = () => {
                   Explorar productos
                 </Link>
                 <button
-                  //falta meter la logica del login y como se abre el pop up
-                  //falta meter la logica de como se va a salir de el pop up
-                  className="border border-gray-400 hover:border-gray-500 text-gray-300 py-3 px-6 rounded-md mr-0 md:mr-4 mb-4 md:mb-0 font-bold text-lg transition duration-300 ease-in-out"
-                >
-                  Login
-                </button>
-                <button
-                  onClick={() => setIsRegistrationOpen(true)} // Open registration form
-                  //falta meter la logica de como se va a salir de el pop up
-                  className="border border-gray-400 hover:border-gray-500 text-gray-300 py-3 px-6 rounded-md font-bold text-lg transition duration-300 ease-in-out"
-                >
-                  Register
-                </button>
+                onClick={() => setIsLoginOpen(true)}
+                className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
+                style={{ marginRight: '10px' }} // stylos
+              >
+                Iniciar sesión
+              </button>
+              <button
+              onClick={() => setIsRegistrationOpen(true)}
+              className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
+              style={{ marginLeft: '10px' }} //styloslabs
+                      >
+                Registrarse
+              </button>
               </div>
             </div>
           </div>
         </div>
-        {isRegistrationOpen && (
-          <div className="fixed top-0 left-0 h-screen w-screen bg-gray-900 bg-opacity-80 flex justify-center items-center">
-            <div className="registration-form-container">
-              <RegistrationForm />
-              <button onClick={() => setIsRegistrationOpen(false)}>Close</button>
+        {isLoginOpen && (
+          <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white p-4 rounded-lg shadow-lg text-center">
+              <Login />
+              <button
+                onClick={() => setIsLoginOpen(false)}
+                className="mt-4 text-gray-500 hover:text-gray-700 cursor-pointer"
+              >
+                Cerrar
+              </button>
             </div>
-
           </div>
+          
+        )}
+        
+        {isRegistrationOpen && (
+          <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white p-4 rounded-lg shadow-lg text-center">
+              <RegistrationForm />
+              <button
+                onClick={() => setIsRegistrationOpen(false)}
+                className="mt-4 text-gray-500 hover:text-gray-700 cursor-pointer"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+          
         )}
       </section>
       <Products />

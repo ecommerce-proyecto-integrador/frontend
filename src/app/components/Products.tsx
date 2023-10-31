@@ -10,6 +10,7 @@ interface Product {
     name: string;
     imageSrc: string;
     price: number;
+    
   }
 
 const products: Product[] = [
