@@ -1,9 +1,6 @@
 import Link from "next/link";
+import Img from "../../../public/Placeholder.jpg";
 
-import Keyboard1Img from "../../../public/Placeholder.jpg";
-import Keyboard2Img from "../../../public/Placeholder.jpg";
-import Keyboard3Img from "../../../public/Placeholder.jpg";
-import Keyboard4Img from "../../../public/Placeholder.jpg";
 
 interface Product {
     id: number;
@@ -17,37 +14,37 @@ const products: Product[] = [
     {
         id: 1,
         name: "Placeholder",
-        imageSrc: Keyboard1Img.src,
+        imageSrc: Img.src,
         price: 99.99,
       },
       {
         id: 2,
         name: "Placeholder",
-        imageSrc: Keyboard2Img.src,
+        imageSrc: Img.src,
         price: 129.99,
       },
       {
         id: 3,
         name: "Placeholder",
-        imageSrc: Keyboard3Img.src,
+        imageSrc: Img.src,
         price: 79.99,
       },
       {
         id: 4,
         name: "Placeholder",
-        imageSrc: Keyboard2Img.src,
+        imageSrc: Img.src,
         price: 149.99,
       },
       {
         id: 5,
         name: "Placeholder",
-        imageSrc: Keyboard3Img.src,
+        imageSrc: Img.src,
         price: 119.99,
       },
       {
         id: 6,
         name: "Placeholder",
-        imageSrc: Keyboard4Img.src,
+        imageSrc: Img.src,
         price: 89.99,
       },
     ];
