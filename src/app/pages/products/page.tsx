@@ -1,32 +1,13 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-
-interface Products {
-    id: number;
-    title: string;
-    category: string;
-    price: number;
-    // Add other properties here if needed
-  }
+import { Product, productsData, categoriesData } from './fake-data'
   
-  const Products: React.FC = () => {
-    const [products, setProducts] = useState<Products[]>([]); // Annotate as an array of Product
-    const [categories, setCategories] = useState<string[]>([]); // Annotate as an array of string
+  const ProductsPage: React.FC = () => {
+    const [products, setProducts] = useState<Product[]>(productsData);
+    const [categories, setCategories] = useState<string[]>(categoriesData);
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [selectedCategory, setSelectedCategory] = useState<string>('');
-  
-    useEffect(() => {
-      // Fetch products
-      fetch('https://fakestoreapi.com/products')
-        .then((res) => res.json())
-        .then((data) => setProducts(data));
-  
-      // Fetch categories
-      fetch('https://fakestoreapi.com/products/categories')
-        .then((res) => res.json())
-        .then((data) => setCategories(data));
-    }, []);
-  
+    
     const filteredProducts = products.filter((product) => {
       // Apply category filter if selected
       if (selectedCategory && selectedCategory !== 'All') {
@@ -39,7 +20,7 @@ interface Products {
   return (
     <div className="container mx-auto mt-8">
       <h1 className="text-3xl font-semibold mb-4">Products</h1>
-
+      
       {/* Search Bar */}
       <input
         type="text"
@@ -80,4 +61,4 @@ interface Products {
   );
 };
 
-export default Products;
+export default ProductsPage;
