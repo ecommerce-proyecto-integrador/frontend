@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import KeyboardImg from "../../../../public/Placeholder.jpg";
 import RegistrationForm from '../../components/Registration';
-import Login from '../../components/Login';
+import Login from '../login/page';
 import Link from 'next/link';
 import Products from '../../components/Products';
 import Features from '../../components/Features';
@@ -31,6 +31,13 @@ const Landing: React.FC = () => {
               <p className="text-gray-300 text-lg mb-6">
                 Se vender Placeholders
               </p>
+              <li>
+              <Link href="../pages/profileuser"
+                  className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
+                >
+                  Perfil de usuario
+                </Link>
+              </li>
               <div className="flex flex-col md:flex-row">
                 <Link href="../pages/products"
                   className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
@@ -85,6 +92,7 @@ const Landing: React.FC = () => {
           
         )}
       </section>
+   
       <Products />
       <Features />
       </div>
