@@ -1,5 +1,5 @@
 import Products from './components/Products';
-import Features from './components/Features';
+import Features from './components/features/Features';
 import Landing from './pages/landing/page';
 import LoginForm from './pages/login/page';
 import { ApolloProvider } from '@apollo/client';

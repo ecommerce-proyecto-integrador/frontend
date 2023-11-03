@@ -14,7 +14,7 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({label, disabled, outline, custom, small, icon: Icon, onClick}) => {
     return (
-        <button
+        <button onClick={onClick}
         disabled={disabled}
         className={`disabled:opacity-70 disabled:cursor-not-allowed rounded-md hover:opacity-80
         transition w-full border-slate-700 flex items-center justify-center gap-2

@@ -1,6 +1,8 @@
 import './globals.css'
 import Footer from './components/footer/Footer'
-import Navbar from './components/Navbar'
+import Navbar from './components/navbar/Navbar'
+import CartProvider from '../../providers/CartProvider'
+import { Toaster } from 'react-hot-toast'
 
 export default function RootLayout({
   children,
@@ -10,11 +12,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="flex flex-col min-h-screen">
-          <Navbar />
-          <main className='flex-grow'>{children}</main>
-          <Footer />
-        </div>
+        <Toaster toastOptions={{style:{background: 'rgb(51 65 85)', color: '#fff'}}} />
+        <CartProvider>
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className='flex-grow'>{children}</main>
+            <Footer />
+          </div>
+        </CartProvider>
       </body>
     </html>
   )

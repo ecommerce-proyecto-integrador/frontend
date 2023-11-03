@@ -5,7 +5,7 @@ import RegistrationForm from '../../components/Registration';
 import Login from '../login/page';
 import Link from 'next/link';
 import Products from '../../components/Products';
-import Features from '../../components/Features';
+import Features from '../../components/features/Features';
 
 const Landing: React.FC = () => {
 
