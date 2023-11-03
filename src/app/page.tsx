@@ -12,8 +12,7 @@ import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 const Home: React.FC = () => {
   return (
       <GraphQlProvider children={undefined} >
-        <Landing />
-        <LoginForm/>  
+        <Landing /> 
       </GraphQlProvider>
   );
 };
