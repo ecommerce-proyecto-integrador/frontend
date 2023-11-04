@@ -1,5 +1,6 @@
 import { Container, Typography, Grid, Box } from "@mui/material";
 import { Keyboard, AutoFixHigh, Lightbulb, Language } from "@mui/icons-material";
+import RecyclingIcon from '@mui/icons-material/Recycling';
 
 
 const Features: React.FC = () => {
@@ -12,12 +13,12 @@ const Features: React.FC = () => {
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
             <Box textAlign="center">
-              <Keyboard sx={{ fontSize: 48, color: "indigo.500" }} />
+              <RecyclingIcon sx={{ fontSize: 48, color: "indigo.500" }} />
               <Typography variant="h4" gutterBottom>
-                Placeholder
+                Eco Friendly
               </Typography>
               <Typography variant="body1" color="textSecondary">
-                Placeholder
+                Totally not made from real monkeys
               </Typography>
             </Box>
           </Grid>
@@ -25,10 +26,10 @@ const Features: React.FC = () => {
             <Box textAlign="center">
               <AutoFixHigh sx={{ fontSize: 48, color: "indigo.500" }} />
               <Typography variant="h4" gutterBottom>
-                Placeholder
+                Magical
               </Typography>
               <Typography variant="body1" color="textSecondary">
-                Placeholder
+                Get your dose of magic with our mythical monkeys
               </Typography>
             </Box>
           </Grid>
@@ -36,10 +37,10 @@ const Features: React.FC = () => {
             <Box textAlign="center">
               <Lightbulb sx={{ fontSize: 48, color: "indigo.500" }} />
               <Typography variant="h4" gutterBottom>
-                Placeholder
+                Thought Provoking
               </Typography>
               <Typography variant="body1" color="textSecondary">
-                Placeholder
+                Wonder why those monkeys are in those situations with us
               </Typography>
             </Box>
           </Grid>
@@ -47,10 +48,10 @@ const Features: React.FC = () => {
             <Box textAlign="center">
               <Language sx={{ fontSize: 48, color: "indigo.500" }} />
               <Typography variant="h4" gutterBottom>
-                Placeholder
+                Globally Known
               </Typography>
               <Typography variant="body1" color="textSecondary">
-                Placeholder
+                We are known all over the world for our monkey apparel
               </Typography>
             </Box>
           </Grid>

@@ -42,6 +42,7 @@ const ProductDetails:React.FC<ProductDetailsProps> = ({product}) => {
     const {handleAddProductToCart, cartProducts} = useCart();
     const [isProductInCart, setIsProductInCart] = useState(false);
     const productRating = product.reviews.reduce((acc:number, item:any) => acc + item.rating, 0) / product.reviews.length;
+
     const [cartProduct, setCartProduct] = useState<CartProductType>({
         id: product.id,
         name: product.name,

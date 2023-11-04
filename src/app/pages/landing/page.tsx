@@ -6,6 +6,7 @@ import Login from '../login/page';
 import Link from 'next/link';
 import Products from '../../components/product/Products';
 import Features from '../../components/features/Features';
+import PopularProducts from '@/app/components/landing/PopularProducts';
 
 const Landing: React.FC = () => {
 
@@ -93,7 +94,7 @@ const Landing: React.FC = () => {
         )}
       </section>
    
-      <Products />
+      <PopularProducts />
       <Features />
       </div>
     );
