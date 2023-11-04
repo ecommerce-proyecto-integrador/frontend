@@ -46,7 +46,7 @@ export const products = [
         {
           color: "Black",
           colorCode: "#000000",
-          imag:monoNadando.src,
+          image:monoNadando.src,
         },
       ],
       reviews: [
