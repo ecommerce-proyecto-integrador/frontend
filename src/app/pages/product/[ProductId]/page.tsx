@@ -1,5 +1,5 @@
 import Container from "@/app/components/Container";
-import { product } from "../../../../../utils/product";
+import { products } from "../../../../../utils/products";
 import ProductDetails from "@/app/components/product/ProductDetails";
 import RatingList from "@/app/components/product/RatingList";
 
@@ -9,6 +9,8 @@ interface ProductDinamicProps {
 
 const ProductDinamic = ({params} : {params: ProductDinamicProps}) => {
     console.log(params);
+
+    const product = products.find((item) => item.id === params.productId);
 
     return (
         <div className="p-8">

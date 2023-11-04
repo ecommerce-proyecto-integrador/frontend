@@ -1,11 +1,11 @@
-import Products from './components/Products';
+import Products from './components/product/Products';
 import Features from './components/features/Features';
 import Landing from './pages/landing/page';
 import LoginForm from './pages/login/page';
 import GraphQlProvider from './GraphQLProvider';
 import { products } from '../../utils/products';
 import Container from './components/Container';
-import ProductCard from './components/products/ProductCard';
+import ProductCard from './components/product/ProductCard';
 import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 
 
