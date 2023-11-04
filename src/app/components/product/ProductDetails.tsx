@@ -75,14 +75,14 @@ const ProductDetails:React.FC<ProductDetailsProps> = ({product}) => {
         if(cartProduct.quantity === 99) return;
 
         setCartProduct((prev) => {
-            return { ...prev, quantity: ++prev.quantity};});
+            return { ...prev, quantity: prev.quantity + 1};});
     }, [cartProduct])
 
     const handleQuantityDecrease = useCallback(() => {
         if(cartProduct.quantity === 1) return;
 
         setCartProduct((prev) => {
-            return { ...prev, quantity: --prev.quantity};});
+            return { ...prev, quantity: prev.quantity - 1};});
     }, [cartProduct])
 
     return (
@@ -105,8 +105,8 @@ const ProductDetails:React.FC<ProductDetailsProps> = ({product}) => {
                 <span className="font-bold">BRAND: </span>
                 {product.brand}
             </div>
-            <div className= {product.inStock ? 'text-teal-400 font-semibold :' : 'text-rose-400 font-semibold'}>{product.inStock ? 'In stock' : 'Out stock'}</div>
-            <HorizontalLine/>
+        <div className= {product.inStock ? 'text-teal-400 font-semibold :' : 'text-rose-400 font-semibold'}>{product.inStock ? 'In stock' : 'Out stock'}</div>
+        <HorizontalLine/>
             {isProductInCart ? <>
                 <p className="mb-2 text-slate-500 flex items-center gap-1">
                     <MdCheckCircle size={20} className="text-teal-400"/>

@@ -13,9 +13,9 @@ const ProductCard:React.FC<ProductCardProps> = ({data}) => {
     const productRating = data.reviews.reduce((acc:number, item:any) => acc + item.rating, 0) / data.reviews.length;
 
     return ( 
-        <div onClick={() => router.push(`/pages/product/${data.id}`)} className="col-span-1 cursor-pointer border-[1.2px] border-slate-200 bg-slate-50 rounded-lg p-2 transition hover:scale-105
+        <div onClick={() => router.push(`/pages/product/${data.id}?id=${data.id}`)} className="col-span-1 cursor-pointer border-[1.2px] border-slate-200 bg-slate-50 rounded-lg p-2 transition hover:scale-105
         text-center text-sm shadow-2xl">
-            <div className="flex flex-col items-center w-full gap-1">
+            <div className="flex flex-col items-center w-full gap-1 my-4">
                 <div className="aspect-square overflow-hidden relative w-full">
                     <Image fill src={data.images[0].image} alt={data.name} className="w-full h-full object-contain"/>
                 </div>

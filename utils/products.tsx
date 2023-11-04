@@ -129,7 +129,7 @@ export const products = [
             name: "ElMatoi",
             email: "example@gmail.com",
             emailVerified: null,
-            image:Img.src,
+            image:null,
             hashedPassword: null,
             createdAt: "2023-05-30T08:08:53.979Z",
             updatedAt: "2023-05-30T08:08:53.979Z",
