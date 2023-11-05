@@ -1,16 +1,28 @@
 "use client"
 import React, { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
 
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
+  
+  const [userData, setUserData] = useState<{ name: string, email: string } | null>(null);
 
   const loginMutation = gql`
     mutation LoginUser($loginInput: LoginUserInput!) {
-      loginUsersTest(loginInput: $loginInput)
+      loginUsersTest(loginInput: $loginInput) {
+        success
+        user {
+          name
+          email
+        }
+      }
     }
   `;
 
@@ -21,32 +33,49 @@ function LoginForm() {
       const { data } = await loginUser({
         variables: {
           loginInput: {
-            clave: password,
-            correo: email,
+            email,
+            password,
           },
         },
       });
-
-      const token = data.loginUsersTest;
-
-      if (token) {
+  
+      const { success, user } = data.loginUsersTest;
+  
+      if (success) {
         console.log('Inicio de sesión exitoso');
         setIsLoggedIn(true);
+        setUserData(user);
+  
+        // envia un true y los datos del user al landing
+        router.push({
+          pathname: '/pages/landing',
+          query: {
+            success: true,
+            name: user.name,
+            email: user.email,
+          },
+        });
       } else {
         setLoginError('Correo o contraseña inválidos.');
       }
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
-      setLoginError('Ocurrió un error al iniciar sesión.');
+      setLoginError('Error al iniciar sesión. Inténtalo de nuevo.');
     }
   };
-
   return (
     <div>
       {isLoggedIn ? (
         <div>
-          <h2>¡Bienvenido!</h2>
-          {/* Coloca aquí el contenido que deseas mostrar después de la autenticación */}
+          {userData ? (
+            <div>
+              <h2>¡Bienvenido, {userData.name}!</h2>
+              <p>Correo: {userData.email}</p>
+              <Link href="/pages/landing">
+                <a>Volver a la homePage</a>
+              </Link>
+            </div>
+          ) : null}
         </div>
       ) : (
         <div>
@@ -69,6 +98,7 @@ function LoginForm() {
       )}
     </div>
   );
+  
 }
 
 export default LoginForm;
