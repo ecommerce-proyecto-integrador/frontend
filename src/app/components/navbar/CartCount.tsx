@@ -7,7 +7,7 @@ const CartCount = () => {
     const {cartTotalQuantity} = useCart();
     const router = useRouter();
     return (
-        <div onClick={() => router.push('/pages/cart')} className="relative curser-pointer">
+        <div onClick={() => router.push('/pages/cart')} className="relative cursor-pointer">
             <div className='text-3xl outline-slate-200'><IoCartOutline/></div>
             <span className='absolute top-[-12px] right-[-12px] bg-slate-700 text-white h-6 w-6 rounded-full flex items-center justify-center text-sm'>{cartTotalQuantity}</span>
         </div>

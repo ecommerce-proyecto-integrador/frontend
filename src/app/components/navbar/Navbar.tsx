@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { FaShoppingCart } from "react-icons/fa";
 import Container from "../Container";
 import Image from "next/image";
 import logo from "../../../../public/logo.jpg";
 import CartCount from "./CartCount";
+import { CgProfile } from "react-icons/cg";
 
 const Navbar: React.FC = () => {
   
@@ -16,9 +16,8 @@ const Navbar: React.FC = () => {
                     <Image src={logo} width={30} height={40} alt="logo" className="rounded-full"/>
                     <Link href="/" className="font-bold text-2xl">MonoStore</Link>
                   </div>
-                  <div className="hidden md:block">Search bar</div>
                   <div className="flex items-center gap-8 md:gap-12">
-                    <div>Profile</div>
+                    <div><CgProfile size={30}/></div>
                     <div><CartCount /></div>
                   </div>
                 </div>
