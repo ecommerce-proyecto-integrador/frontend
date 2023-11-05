@@ -6,12 +6,6 @@ import Login from '../login/page';
 import Link from 'next/link';
 import Features from '../../components/features/Features';
 import PopularProducts from '@/app/components/landing/PopularProducts';
-<<<<<<< HEAD
-import { useRouter } from 'next/router';
-import Container from '@/app/components/Container';
-=======
-
->>>>>>> e2d9a0080edb0a8851cec3a73ae72a5f1deb47ad
 
 const Landing: React.FC = () => {
 
@@ -23,47 +17,6 @@ const Landing: React.FC = () => {
     };
 
     return (
-<<<<<<< HEAD
-      <Container>
-        <section
-          className="h-screen w-screen flex justify-center items-center bg-cover bg-center object-contain"
-          style={{ backgroundImage: `url('${landindImage.src}')` }}
-        >
-          <div className="mt-16 h-screen w-full absolute top-0 left-0 flex justify-center items-center bg-gray-900 bg-opacity-80">
-            <div className="container mx-auto flex flex-col md:flex-row items-center justify-between text-white">
-              <div className="w-full md:w-1/2 md:mr-8">
-                <h2 className="text-4xl font-bold mb-4 text-cyan-500">
-                  MonoStore
-                </h2>
-                <p className="text-gray-300 text-lg mb-6">
-                  Monkey Themed Apparel Sold by MonoStore
-                </p>
-                
-                {showUserData && (
-                  <div>
-                    <h2>¡Bienvenido, {name}!</h2>
-                    <p>Correo: {email}</p>
-                    <Link href="../pages/profileuser"
-                        className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
-                          >
-                          Perfil de usuario
-                    </Link>
-                    <Link href="../pages/products"
-                            className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
-                          >
-                            Explorar productos
-                          </Link>
-                      </div>
-        )}
-                <div className="flex flex-col md:flex-row">
-                  <Link href="../pages/products"
-                    className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
-                  >
-                    Explore Products
-                  </Link>
-                  <button
-                  onClick={() => setIsLoginOpen(true)}
-=======
       <div>
       <section
         className="h-screen w-screen flex justify-center items-center bg-cover bg-center object-contain"
@@ -86,20 +39,19 @@ const Landing: React.FC = () => {
                 </Link>
               </li>
               <div className="flex flex-col md:flex-row">
-                <Link href="../pages/products"
->>>>>>> e2d9a0080edb0a8851cec3a73ae72a5f1deb47ad
+                <Link href="../pages/loginlab"
                   className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
                   style={{ marginRight: '10px' }} // stylos
                 >
                   Log in
-                </button>
-                <button
-                onClick={() => setIsRegistrationOpen(true)}
+                </Link>
+                <Link
+                href="../pages/register"
                 className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
                 style={{ marginLeft: '10px' }} //styloslabs
                         >
                   Sign in
-                </button>
+                </Link>
                 </div>
               </div>
             </div>
@@ -137,7 +89,7 @@ const Landing: React.FC = () => {
    
         <PopularProducts />
         <Features />
-      </Container>
+      </div>
     );
     
 
