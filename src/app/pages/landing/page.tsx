@@ -7,15 +7,12 @@ import Link from 'next/link';
 import Products from '../../components/product/Products';
 import Features from '../../components/features/Features';
 import PopularProducts from '@/app/components/landing/PopularProducts';
-import { useRouter } from 'next/router';
+
 
 const Landing: React.FC = () => {
 
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegistrationOpen, setIsRegistrationOpen]=useState(false);
-  const router = useRouter();
-  const { success, name, email } = router.query;
-  const showUserData = success === 'true' && name && email;
 
     const toggleRegistrationForm = () => {
       setIsRegistrationOpen(!isRegistrationOpen);
@@ -36,23 +33,13 @@ const Landing: React.FC = () => {
               <p className="text-gray-300 text-lg mb-6">
                 Monkey Themed Apparel Sold by MonoStore
               </p>
-              
-              {showUserData && (
-                <div>
-                  <h2>¡Bienvenido, {name}!</h2>
-                  <p>Correo: {email}</p>
-                  <Link href="../pages/profileuser"
-                      className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
-                        >
-                        Perfil de usuario
-                  </Link>
-                  <Link href="../pages/products"
-                          className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
-                        >
-                          Explorar productos
-                        </Link>
-                    </div>
-      )}
+              <li>
+              <Link href="../pages/profileuser"
+                  className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
+                >
+                  User Profile
+                </Link>
+              </li>
               <div className="flex flex-col md:flex-row">
                 <Link href="../pages/products"
                   className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
