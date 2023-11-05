@@ -3,11 +3,12 @@ import { FaShoppingCart } from "react-icons/fa";
 import Container from "../Container";
 import Image from "next/image";
 import logo from "../../../../public/logo.jpg";
+import CartCount from "./CartCount";
 
 const Navbar: React.FC = () => {
   
     return (
-          <div className="sticky top-0 w-full bg-slate-200 z-30 shadow-sm">
+          <div className="sticky top-0 w-full bg-white z-30 shadow-md">
             <div className="py-4 border-b-[1px]">
               <Container>
                 <div className="flex items-center justify-between gap-3 md-gap-0">
@@ -18,7 +19,7 @@ const Navbar: React.FC = () => {
                   <div className="hidden md:block">Search bar</div>
                   <div className="flex items-center gap-8 md:gap-12">
                     <div>Profile</div>
-                    <div>Cart</div>
+                    <div><CartCount /></div>
                   </div>
                 </div>
               </Container>

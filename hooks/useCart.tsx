@@ -1,9 +1,11 @@
 import { CartProductType } from "@/app/components/product/ProductDetails";
+import { get } from "http";
 import { createContext, useState, useContext, useCallback, useEffect } from "react";
 import { toast } from "react-hot-toast";
 
 type CartContextType = {
     cartTotalQuantity: number;
+    cartTotalAmount: number;
     cartProducts: CartProductType[] | null;
     handleAddProductToCart: (product: CartProductType) => void;
     handleRemoveProductFromCart: (product: CartProductType) => void;
@@ -21,6 +23,7 @@ interface  Props {
 export const CartContextProvider = (props: Props) => {
     const [cartTotalQuantity, setCartTotalQuantity] = useState(0);
     const [cartProducts, setCartProducts] = useState<CartProductType[] | null>(null);
+    const [cartTotalAmount, setCartTotalAmount] = useState(0);
 
     useEffect(() => {
         const cartItems: any = localStorage.getItem("MonoStoreItems");
@@ -28,6 +31,29 @@ export const CartContextProvider = (props: Props) => {
 
         setCartProducts(productsInCart);
     }, []);
+
+    console.log('quantity', cartTotalQuantity);
+    console.log('amount', cartTotalAmount);
+
+    useEffect(() => {
+        const getPurchaseTotal = () => {
+            if(cartProducts){
+                const {total, quantity} = cartProducts?.reduce((acc, item) => {
+                    const itemTotal = item.price * item.quantity;
+                    acc.total += itemTotal;
+                    acc.quantity += item.quantity;
+    
+                    return acc;
+                }, {
+                    total: 0,
+                    quantity: 0,
+                });
+                setCartTotalQuantity(quantity);
+                setCartTotalAmount(total);
+            }
+        }
+        getPurchaseTotal();
+    }, [cartProducts]);
 
     const handleAddProductToCart = useCallback((product: CartProductType) => {
         setCartProducts((prev) => {
@@ -99,6 +125,7 @@ export const CartContextProvider = (props: Props) => {
 
     const value = {
         cartTotalQuantity,
+        cartTotalAmount,
         cartProducts,
         handleAddProductToCart,
         handleRemoveProductFromCart,

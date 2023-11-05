@@ -9,7 +9,7 @@ interface SetQuantityProps {
     handleQuantityDecrease: () => void;
 }
 
-const buttonStyles = 'border-[1.2px] border-slate-300 px-2 rounded';
+const buttonStyles = 'border-[1.2px] border-slate-500 bg-slate-200 px-2 rounded text-slate-500';
 
 const SetQuantity: React.FC<SetQuantityProps> = ({cartCounter, cartProduct, handleQuantityDecrease, handleQuantityIncrease}) => {
     return (

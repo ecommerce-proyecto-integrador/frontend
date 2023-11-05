@@ -20,6 +20,7 @@ export const products = [
       brand: "Monobrand",
       category: "Category A",
       inStock: true,
+      sizeAvailable: ["S", "L", "XXL"],
       images: [
         {
           color: "White",
@@ -42,6 +43,7 @@ export const products = [
       brand: "Monobrand",
       category: "Category B",
       inStock: true,
+      sizeAvailable: ["M", "XL"],
       images: [
         {
           color: "Black",
@@ -62,7 +64,7 @@ export const products = [
             name: "ElMatoi",
             email: "example@gmail.com",
             emailVerified: null,
-            image:Img.src,
+            image:null,
             hashedPassword: null,
             createdAt: "2023-05-30T08:08:53.979Z",
             updatedAt: "2023-05-30T08:08:53.979Z",
@@ -79,6 +81,7 @@ export const products = [
       brand: "Monobrand",
       category: "Category C",
       inStock: true,
+      sizeAvailable: ["S", "M", "L", "XL", "XXL"],
       images: [
         {
           color: "Black",
@@ -110,7 +113,7 @@ export const products = [
             name: "Carlosweed",
             email: "example1@gmail.com",
             emailVerified: null,
-            image:Img.src,
+            image:null,
             hashedPassword: null,
             createdAt: "2023-06-26T15:40:52.558Z",
             updatedAt: "2023-06-26T15:40:52.558Z",
@@ -146,6 +149,7 @@ export const products = [
       brand: "Monobrand",
       category: "Category A",
       inStock: true,
+      sizeAvailable: ["M", "L", "XL", "XXL"],
       images: [
         {
           color: "Graphite",
@@ -163,6 +167,7 @@ export const products = [
       brand: "Monobrand",
       category: "Category B",
       inStock: true,
+      sizeAvailable: ["S", "M", "L", "XXL"],
       images: [
         {
           color: "Black",
@@ -185,6 +190,7 @@ export const products = [
       brand: "Monobrand",
       category: "Category C",
       inStock: true,
+      sizeAvailable: ["S", "M", "L"],
       images: [
         {
           color: "Black",

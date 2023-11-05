@@ -9,6 +9,7 @@ import ProductImage from "./ProductImage";
 import { useCart } from "../../../../hooks/useCart";
 import { MdCheckCircle } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import SetSize from "./SetSize";
 
 interface ProductDetailsProps {
     product: any
@@ -21,6 +22,7 @@ export type CartProductType = {
     category: string,
     brand: string,
     selectedImg: SelectedImgType,
+    size: string,
     quantity: number,
     price: number
 }
@@ -33,7 +35,7 @@ export type SelectedImgType = {
 
 const HorizontalLine = () => {
     return (
-        <hr className=" w-[30%] my-2"/>
+        <hr className="border-slate-400 w-[30%] my-2"/>
     )
 }
 
@@ -49,6 +51,7 @@ const ProductDetails:React.FC<ProductDetailsProps> = ({product}) => {
         description: product.description,
         category: product.category,
         brand: product.brand,
+        size: product.sizeAvailable[0],
         selectedImg: {...product.images[0]},
         quantity: 1,
         price: product.price
@@ -65,6 +68,11 @@ const ProductDetails:React.FC<ProductDetailsProps> = ({product}) => {
             }
         }
     }, [cartProducts])
+
+    const handleSizeSelect = useCallback((value: string) => {
+        setCartProduct((prev) => {
+            return { ...prev, size: value};});
+    }, [cartProduct.size])
 
     const handleColorSelect = useCallback((value: SelectedImgType) => {
         setCartProduct((prev) => {
@@ -86,7 +94,7 @@ const ProductDetails:React.FC<ProductDetailsProps> = ({product}) => {
     }, [cartProduct])
 
     return (
-        <div className="grid grid-cols-1  md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <ProductImage cartProduct={cartProduct} product={product} handleColorSelect={handleColorSelect}/>
         <div className="flex flex-col gap-1 text-slate-500 text-sm">
             <h2 className="text-3xl font-bold text-slate-700">{product.name}</h2>
@@ -116,6 +124,8 @@ const ProductDetails:React.FC<ProductDetailsProps> = ({product}) => {
                     <Button label="Go to cart" outline onClick={() => {router.push('/pages/cart')}}/>
                 </div>
             </> : <>
+                <SetSize cartProduct={cartProduct} sizes={product.sizeAvailable} handleSizeSelect={handleSizeSelect} />
+                <HorizontalLine/>
                 <SetColor cartProduct={cartProduct} images={product.images} handleColorSelect={handleColorSelect} />
                 <HorizontalLine/>
                 <SetQuantity cartProduct={cartProduct} handleQuantityDecrease={handleQuantityDecrease} handleQuantityIncrease={handleQuantityIncrease} />

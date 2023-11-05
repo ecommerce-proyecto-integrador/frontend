@@ -18,7 +18,7 @@ const ItemContent: React.FC<ItemContentProps> = ({item}) => {
     const router = useRouter();
 
     return (
-        <div className="grid grid-cols-5 text-xs md:text-sm gap-4 border-t-[1.5px] border-slate-200 py-4 items-center">
+        <div className="grid grid-cols-5 text-xs md:text-sm gap-4 border-t-[1.5px] border-slate-400 py-4 items-center">
             <div className="col-span-2 justify-start flex gap-2 md:gap-4">
                 <div className="cursor-pointer" onClick={() => router.push(`/pages/product/${item.id}?id=${item.id}`)}>
                     <div className="relative w-[70px] aspect-square">
@@ -26,10 +26,11 @@ const ItemContent: React.FC<ItemContentProps> = ({item}) => {
                     </div>
                 </div>
                 <div className="flex flex-col justify-between">
-                <div className="cursor-pointer" onClick={() => router.push(`/pages/product/${item.id}?id=${item.id}`)}>
+                <div className="cursor-pointer font-semibold" onClick={() => router.push(`/pages/product/${item.id}?id=${item.id}`)}>
                     <div>{item.name}</div>
                 </div>
                 <div>{item.selectedImg.color}</div>
+                <div>{item.size}</div>
                 <div className="w-[70px]">
                     <button className="text-slate-500 underline" onClick={() => handleRemoveProductFromCart(item)}>Remove</button>
                 </div>

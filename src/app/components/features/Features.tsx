@@ -5,7 +5,7 @@ import RecyclingIcon from '@mui/icons-material/Recycling';
 
 const Features: React.FC = () => {
   return (
-    <Box py={16} bgcolor="white">
+    <Box py={16} bgcolor="bg-slate-200">
       <Container maxWidth="xl">
         <Typography variant="h3" align="center" gutterBottom>
           Features
