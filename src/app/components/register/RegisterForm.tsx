@@ -1,40 +1,83 @@
 'use client';
-import { useState } from "react";
-import Input from "../input/Input";
-import Heading from "../product/Heading";
-import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
-import Button from "../Button";
-import Link from "next/link";
-import { AiOutlineGoogle } from "react-icons/ai";
+import React, { useState } from 'react';
+import { useMutation, gql } from '@apollo/client';
 
-const RegisterForm = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const { register, handleSubmit, formState: {errors} } = useForm<FieldValues>({
-        defaultValues:{
-            name: '',
-            email: '',
-            password: '',
-        }
-    });
+const RegisterForm: React.FC = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  });
+  const [firstName,setFirstName]=useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-    const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        setIsLoading(true);
-        console.log(data);
-
+  const userMutation = gql`
+    mutation createUser($userInput: createUserInput!) {
+      createUserTest(userInput: $userInput)
     }
+  `;
+    
+  const [createUser] = useMutation(userMutation);
 
-    return (
-        <>
-        <Heading title="Sign up for MonoStore"/>
-        {/*<Button label="Sign up with Google" icon={AiOutlineGoogle} onClick={() => {}}></Button>*/}
-        <hr className="bg-slate-500 w-full h-px"/>
-        <Input id="name" label="Name" disabled={isLoading} register={register} errors={errors} required/>
-        <Input id="e-mail" label="Email" disabled={isLoading} register={register} errors={errors} required/>
-        <Input id="password" label="Password" disabled={isLoading} register={register} errors={errors} required type="password"/>
-        <Button label={isLoading ? "Loading" : "Sign up"} onClick={handleSubmit(onSubmit)} />
-        <p className="text-sm">Already have an account?{" "}<Link className="underline" href='/pages/loginlab'>Login</Link></p>
-        </>
-    )
-}
+  const handleRegister = async () => {
+    try {
+      const { data } = await createUser({
+        variables: {
+          userInput: {
+            nombre:  firstName,
+            correo: email,
+            clave: password,
+            
+          },
+        },
+      });
+     
+    } catch (error) {
+      console.error('Error al registrarse', error);
+      
+    }
+  };
+ 
+
+  return (
+    <div className="text-center">
+    
+          <h2>Sign up for MonoStore</h2>
+          
+          <input
+            className="border border-gray-400 px-3 py-2 rounded-md mb-2"
+            type="firstname"
+            placeholder="Nombre"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+          <input
+            className="border border-gray-400 px-3 py-2 rounded-md mb-2"
+            type="email"
+            placeholder="Correo electrónico"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            className="border border-gray-400 px-3 py-2 rounded-md mb-2"
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button
+            className="bg-blue-500 text-white px-4 py-2 rounded-md"
+            onClick={handleRegister}
+          >
+            Register
+          </button>
+          
+        </div>
+      )};
+   
+
+
 
 export default RegisterForm;

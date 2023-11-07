@@ -1,20 +1,24 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import landindImage from "../../../../public/landing-img.jpg";
 import RegistrationForm from '../../components/Registration';
-import Login from '../login/page';
+
 import Link from 'next/link';
 import Features from '../../components/features/Features';
 import PopularProducts from '@/app/components/landing/PopularProducts';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useQuery } from '@apollo/client';
+import { useMutation, gql } from '@apollo/client';
 
 const Landing: React.FC = () => {
 
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegistrationOpen, setIsRegistrationOpen]=useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
 
-    const toggleRegistrationForm = () => {
-      setIsRegistrationOpen(!isRegistrationOpen);
-    };
+
+
 
     return (
       <div>
@@ -31,6 +35,17 @@ const Landing: React.FC = () => {
               <p className="text-gray-300 text-lg mb-6">
                 Monkey Themed Apparel Sold by MonoStore
               </p>
+              {isLoggedIn ? (
+        
+              <Link href="../pages/profileuser"
+              className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
+            >
+              User Profile
+            </Link>
+            ) : (
+              <p></p>
+            )}
+              
               <div className="flex flex-col md:flex-row">
                 <Link href="../pages/loginlab"
                   className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
@@ -49,37 +64,11 @@ const Landing: React.FC = () => {
               </div>
             </div>
           </div>
-          {isLoginOpen && (
-            <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50">
-              <div className="bg-white p-4 rounded-lg shadow-lg text-center">
-                <Login />
-                <button
-                  onClick={() => setIsLoginOpen(false)}
-                  className="mt-4 text-gray-500 hover:text-gray-700 cursor-pointer"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-            
-          )}
+         
           
-          {isRegistrationOpen && (
-            <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50">
-              <div className="bg-white p-4 rounded-lg shadow-lg text-center">
-                <RegistrationForm />
-                <button
-                  onClick={() => setIsRegistrationOpen(false)}
-                  className="mt-4 text-gray-500 hover:text-gray-700 cursor-pointer"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-            
-          )}
+         
         </section>
-   
+        
         <PopularProducts />
         <Features />
       </div>
