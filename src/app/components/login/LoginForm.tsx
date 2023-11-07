@@ -26,10 +26,13 @@ const LoginForm = () => {
         <Heading title="Login to MonoStore"/>
         {/*<Button label="Continue with Google" icon={AiOutlineGoogle} onClick={() => {}}></Button>*/}
         <hr className="bg-slate-500 w-full h-px"/>
-        <Input id="e-mail" label="Email" disabled={isLoading} register={register} errors={errors} required/>
+        <Input id="email" label="Email" disabled={isLoading} register={register} errors={errors} required/>
         <Input id="password" label="Password" disabled={isLoading} register={register} errors={errors} required type="password"/>
         <Button label={isLoading ? "Loading" : "Login"} onClick={handleSubmit(onSubmit)} />
-        <p className="text-sm">Do not have an account?{" "}<Link className="underline" href='/pages/register'>Sign up</Link></p>
+        <div className="flex gap-20">
+            <p className="text-sm">Do not have an account?{" "}<Link className="underline" href='/pages/register'>Sign up</Link></p>
+            <p className="text-sm">Forgot your password?{" "}<Link className="underline" href='/pages/loginlab/pass-recovery'>Recover it</Link></p>
+        </div>
         </>
     )
 };

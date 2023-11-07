@@ -31,13 +31,6 @@ const Landing: React.FC = () => {
               <p className="text-gray-300 text-lg mb-6">
                 Monkey Themed Apparel Sold by MonoStore
               </p>
-              <li>
-              <Link href="../pages/profileuser"
-                  className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
-                >
-                  User Profile
-                </Link>
-              </li>
               <div className="flex flex-col md:flex-row">
                 <Link href="../pages/loginlab"
                   className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"

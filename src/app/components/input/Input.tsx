@@ -11,11 +11,12 @@ interface InputProps {
     required?: boolean;
     register: UseFormRegister<FieldValues>;
     errors: FieldErrors
+    //icon?: React.ReactNode;
 }
 
 const Input: React.FC<InputProps> = ({id, label, type, disabled, required, register, errors}) => {
     return (
-        <div className="w-full relative">
+        <div className="w-full relative flex justify-between">
             <input autoComplete="off" id={id} disabled={disabled} {...register(id, {required})} placeholder="" type={type}
             className={`peer w-full p-4 pt-6 outline-none bg-white font-light border-2 rounded-md transition disabled:opacity-70 disabled:cursor-not-allowed
             ${errors[id]? 'border-rose-400' : 'border-slate-400'}

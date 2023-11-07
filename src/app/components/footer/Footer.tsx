@@ -10,12 +10,11 @@ const Footer: React.FC = () => {
           <Container>
             <div className="flex flex-col- md:flex-row justify-between pt-16 pb-8">
               <FooterList>
-                <h3 className="text-base font-bold mb-2">Shop Categories</h3>
-                <Link href="#">Monos</Link>
-                <Link href="#">Duendes</Link>
-                <Link href="#">Matilab</Link>
-                <Link href="#">Carlosweed</Link>
-                <Link href="#">Diegomain</Link>
+                <h3 className="text-base font-bold mb-2">MonoStore Team</h3>
+                <Link href="#">Carlos</Link>
+                <Link href="#">Diego</Link>
+                <Link href="#">Mati</Link>
+                <Link href="#">Bassano</Link>
               </FooterList>
               <FooterList>
                 <h3 className="text-base font-bold mb-2">Customer Service</h3>
@@ -27,10 +26,10 @@ const Footer: React.FC = () => {
               <div className="w-full md:w-1/3 mb-6 md:mb-0">
                 <h3 className="text-base font-bold mb-2">About us</h3>
                 <p className="mb-2">
-                Discover enchanting paintings of monkeys and duendes.
+                Discover enchanting paintings of monkeys.
                 Embrace the magic of art that sparks imagination.
                 Handpicked. Captivating. Yours.
-                Explore our world of whimsical paintings.
+                Explore our world of whimsical apparel.
                 </p>
                 <p>&copy; {new Date().getFullYear()} Monostore. All rights reserverd.</p>
               </div>
