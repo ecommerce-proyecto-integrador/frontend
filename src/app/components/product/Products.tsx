@@ -40,14 +40,14 @@ const Products: React.FC = () => {
 
   return (
     <div className="max-w-screen-xl mx-auto my-8 px-4">
-      <div className="bg-white margin p-5 rounded-xl mb-10">
+      <div className="bg-white margin p-5 rounded-xl mb-10 shadow-lg">
         <div className='flex justify-between items-center'>
           {/* Category Filter */}
           <select
             value={categoryFilter}
             onChange={handleCategoryChange}
             className="block py-2.5 px-0 w-[200px] text-sm font-semibold text-gray-500
-            bg-transparent border-0 border-b-2 border-gray-200 appearance-none
+            bg-transparent border-0 border-b-2 border-gray-200 appearance-none cursor-pointer
             dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
           >
             {categories.map(category => (
@@ -62,7 +62,7 @@ const Products: React.FC = () => {
             value={brandFilter}
             onChange={handleBrandChange}
             className="block py-2.5 px-0 w-[200px] text-sm text-gray-500 font-semibold
-            bg-transparent border-0 border-b-2 border-gray-200 appearance-none
+            bg-transparent border-0 border-b-2 border-gray-200 appearance-none cursor-pointer
             dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
           >
             {brands.map(brand => (
@@ -79,7 +79,7 @@ const Products: React.FC = () => {
             onChange={handlePriceChange}
             placeholder="Max Price"
             className="block py-2.5 px-0 w-[200px] text-sm text-gray-500 font-semibold
-            bg-transparent border-0 border-b-2 border-gray-200 appearance-none
+            bg-transparent border-0 border-b-2 border-gray-200 appearance-none cursor-pointer
             dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
           />
         </div>
