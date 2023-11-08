@@ -47,6 +47,12 @@ const Landing: React.FC = () => {
             )}
               
               <div className="flex flex-col md:flex-row">
+              <Link href="../pages/products"
+                  className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
+                  style={{ marginRight: '10px' }} // stylos
+                >
+                  Explore Products
+                </Link>
                 <Link href="../pages/loginlab"
                   className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
                   style={{ marginRight: '10px' }} // stylos
@@ -56,7 +62,7 @@ const Landing: React.FC = () => {
                 <Link
                 href="../pages/register"
                 className="bg-cyan-500 hover:bg-cyan-600 text-white py-3 px-6 rounded-md font-bold text-lg mr-0 md:mr-4 mb-4 md:mb-0 transition duration-300 ease-in-out"
-                style={{ marginLeft: '10px' }} //styloslabs
+                style={{ marginRight: '10px' }} //styloslabs
                         >
                   Sign in
                 </Link>

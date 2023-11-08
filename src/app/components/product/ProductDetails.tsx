@@ -115,7 +115,7 @@ const ProductDetails:React.FC<ProductDetailsProps> = ({product}) => {
             </div>
         <div className= {product.inStock ? 'text-teal-400 font-semibold :' : 'text-rose-400 font-semibold'}>{product.inStock ? 'In stock' : 'Out stock'}</div>
         <HorizontalLine/>
-            {isProductInCart ? <>
+            {/*{isProductInCart ? <>
                 <p className="mb-2 text-slate-500 flex items-center gap-1">
                     <MdCheckCircle size={20} className="text-teal-400"/>
                     <span>Product added to cart</span>
@@ -123,7 +123,7 @@ const ProductDetails:React.FC<ProductDetailsProps> = ({product}) => {
                 <div className="max-w-[300px]">
                     <Button label="Go to cart" outline onClick={() => {router.push('/pages/cart')}}/>
                 </div>
-            </> : <>
+            </> :*/} <>
                 <SetSize cartProduct={cartProduct} sizes={product.sizeAvailable} handleSizeSelect={handleSizeSelect} />
                 <HorizontalLine/>
                 <SetColor cartProduct={cartProduct} images={product.images} handleColorSelect={handleColorSelect} />
@@ -131,7 +131,7 @@ const ProductDetails:React.FC<ProductDetailsProps> = ({product}) => {
                 <SetQuantity cartProduct={cartProduct} handleQuantityDecrease={handleQuantityDecrease} handleQuantityIncrease={handleQuantityIncrease} />
                 <HorizontalLine/>
                 <div className="max-w-[300px]"><Button label="Add To Cart" onClick={() => handleAddProductToCart(cartProduct)}/></div>
-            </>}
+            </>
         </div>
         </div>
     )
