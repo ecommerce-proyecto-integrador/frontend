@@ -9,7 +9,7 @@ interface SetSizeProps {
 
 const SetSize: React.FC<SetSizeProps> = ({cartProduct, sizes, handleSizeSelect}) => {
     const fixedSizes = ['S', 'M', 'L', 'XL', 'XXL']
-
+    console.log("sizes", sizes);
     return (
         <div>
             <div>

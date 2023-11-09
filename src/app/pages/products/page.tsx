@@ -1,18 +1,20 @@
-'use client';
-import React, { useState, useEffect } from 'react';
+"use client";
+import React, { useState, useEffect } from "react";
 import { products } from "../../../../utils/products";
-import Container from '@/app/components/Container';
-import Products from '@/app/components/product/Products';
-  
-  const ProductsPage: React.FC = () => {
-    const [searchTerm, setSearchTerm] = useState<string>('');
-    const product = [products];
+import Container from "@/app/components/Container";
+import Products from "@/app/components/product/Products";
+import GraphQlProvider from "./../../GraphQLProvider";
+const ProductsPage: React.FC = () => {
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const product = [products];
 
-    return (  
+  return (
+    <GraphQlProvider children={undefined}>
       <Container>
-          <Products />
+        <Products />
       </Container>
-    );
+    </GraphQlProvider>
+  );
 };
 
 export default ProductsPage;

@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
+import client from './../../apolloClient';
 
 function LoginForm() {
   const [email, setEmail] = useState('');
@@ -14,7 +15,7 @@ function LoginForm() {
     }
   `;
 
-  const [loginUser] = useMutation(loginMutation);
+  const [loginUser] = useMutation(loginMutation, {client: client,});
 
   const handleLogin = async () => {
     try {

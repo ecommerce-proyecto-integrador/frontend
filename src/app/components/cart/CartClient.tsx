@@ -36,7 +36,7 @@ const CartClient = () => {
             <div>
                 {cartProducts && cartProducts.map((item) => {
                     return (
-                        <ItemContent key={item.id} item={item}/>
+                        <ItemContent key={`${item.id}${item.selectedImg.color}${item.size}`} item={item}/>
                     );
                 })}
             </div>

@@ -74,8 +74,8 @@ export const CartContextProvider = (props: Props) => {
 
     const handleRemoveProductFromCart = useCallback((product: CartProductType) => {
         if(cartProducts){
-            const filteredProducts = cartProducts.filter((item) => {return item.id !== product.id})
-
+            const filteredProducts = cartProducts.filter((item) => {return `${item.id}${item.selectedImg.color}${item.size}` !== `${product.id}${product.selectedImg.color}${product.size}`})
+            console.log('filteredProducts', filteredProducts)
             setCartProducts(filteredProducts);
 
             toast.success('Product removed')
@@ -91,8 +91,8 @@ export const CartContextProvider = (props: Props) => {
         if(cartProducts) {
             updatedCart = [...cartProducts]
 
-            const existingIndex = cartProducts.findIndex((item) => item.id === product.id);
-
+            const existingIndex = cartProducts.findIndex((item) => `${item.id}${item.selectedImg.color}${item.size}` == `${product.id}${product.selectedImg.color}${product.size}`);
+            console.log('existingIndex', existingIndex)
             if(existingIndex > -1) updatedCart[existingIndex].quantity = ++updatedCart[existingIndex].quantity;
 
             setCartProducts(updatedCart);
@@ -108,7 +108,7 @@ export const CartContextProvider = (props: Props) => {
         if(cartProducts) {
             updatedCart = [...cartProducts]
 
-            const existingIndex = cartProducts.findIndex((item) => item.id === product.id);
+            const existingIndex = cartProducts.findIndex((item) => `${item.id}${item.selectedImg.color}${item.size}` == `${product.id}${product.selectedImg.color}${product.size}`);
 
             if(existingIndex > -1) updatedCart[existingIndex].quantity = --updatedCart[existingIndex].quantity;
 

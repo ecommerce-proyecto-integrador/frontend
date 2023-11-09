@@ -43,20 +43,30 @@ const ProductDetails:React.FC<ProductDetailsProps> = ({product}) => {
     const router = useRouter();
     const {handleAddProductToCart, cartProducts} = useCart();
     const [isProductInCart, setIsProductInCart] = useState(false);
+   
+    console.log("product detail", product);
+    
+    if(product.reviews == "[]"){
+        product.reviews = Array.from([]);
+    }
+    else
+    {
+        product.reviews = Array.from(product.reviews);
+    }
+    
     const productRating = product.reviews.reduce((acc:number, item:any) => acc + item.rating, 0) / product.reviews.length;
-
     const [cartProduct, setCartProduct] = useState<CartProductType>({
-        id: product.id,
+        id: product.ID,
         name: product.name,
         description: product.description,
-        category: product.category,
+        category: product.Category,
         brand: product.brand,
         size: product.sizeAvailable[0],
         selectedImg: {...product.images[0]},
         quantity: 1,
         price: product.price
     });
-
+    console.log("Stock", product.inStock);
     useEffect(() => {
         setIsProductInCart(false)
 

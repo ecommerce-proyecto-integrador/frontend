@@ -22,11 +22,11 @@ const ItemContent: React.FC<ItemContentProps> = ({item}) => {
             <div className="col-span-2 justify-start flex gap-2 md:gap-4">
                 <div className="cursor-pointer" onClick={() => router.push(`/pages/product/${item.id}?id=${item.id}`)}>
                     <div className="relative w-[70px] aspect-square">
-                        <Image src={item.selectedImg.image} alt={item.name} fill className="object-contain"/>
+                        <Image src={`http://localhost:8181/images/${item.selectedImg.image}`} alt={item.name} fill className="object-contain"/>
                     </div>
                 </div>
                 <div className="flex flex-col justify-between">
-                <div className="cursor-pointer font-semibold" onClick={() => router.push(`/pages/product/${item.id}?id=${item.id}`)}>
+                <div className="cursor-pointer font-semibold" onClick={() => router.push(`/pages/product/${item.name}?id=${item.id}`)}>
                     <div>{item.name}</div>
                 </div>
                 <div>{item.selectedImg.color}</div>

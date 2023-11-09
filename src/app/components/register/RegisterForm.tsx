@@ -1,8 +1,10 @@
 'use client';
 import React, { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
+import { useRouter } from "next/navigation";
 
 const RegisterForm: React.FC = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -14,8 +16,8 @@ const RegisterForm: React.FC = () => {
   const [password, setPassword] = useState('');
 
   const userMutation = gql`
-    mutation createUser($userInput: createUserInput!) {
-      createUserTest(userInput: $userInput)
+    mutation createUsers($userInput: CreateUserInput!) {
+      createUsers(userInput: $userInput)
     }
   `;
     
@@ -26,11 +28,16 @@ const RegisterForm: React.FC = () => {
       const { data } = await createUser({
         variables: {
           userInput: {
-            nombre:  firstName,
-            correo: email,
+            name:  firstName,
             clave: password,
-            
+            correo: email,
+            rol: "client",
           },
+        },
+        onCompleted: (data) => {
+          if(data.createUsers == true){
+            router.push("/pages/login");
+          }
         },
       });
      
