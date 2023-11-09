@@ -17,7 +17,7 @@ const ValidationForm = () => {
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
-        router.push('/pages/loginlab/change-password');
+        router.push('/pages/login/change-password');
     }
 
     return (

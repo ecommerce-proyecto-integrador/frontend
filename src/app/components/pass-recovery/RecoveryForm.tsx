@@ -18,7 +18,7 @@ const RecoveryForm = () => {
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
-        router.push('/pages/loginlab/pass-recovery-validation');
+        router.push('/pages/login/pass-recovery-validation');
     }
 
     return (
@@ -26,9 +26,7 @@ const RecoveryForm = () => {
         <Heading title="Password Recovery"/>
         <hr className="bg-slate-500 w-full h-px"/>
         <Input id="email" label="Email" disabled={isLoading} register={register} errors={errors} required/>
-        <Link href='/pages/login/pass-recovery-validation'>
-            <Button label={isLoading ? "Loading" : "Confirm"} onClick={handleSubmit(onSubmit)} />
-        </Link>
+        <Button label={isLoading ? "Loading" : "Confirm"} onClick={handleSubmit(onSubmit)} />
         </>
     )
 };

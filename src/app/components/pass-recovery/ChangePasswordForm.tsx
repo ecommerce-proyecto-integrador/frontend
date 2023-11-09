@@ -58,9 +58,9 @@ const ChangePasswordForm = () => {
                 required
                 //icon={showPassword ? "eye-off" : "eye"}
             />
-            <button className="underline " onClick={togglePasswordVisibility}>
+            {/*<button className="underline " onClick={togglePasswordVisibility}>
                 {showPassword ? "Hide" : "Show"}
-            </button>
+    </button>*/}
         </div>
         <Button label={isLoading ? "Loading" : "Confirm"} onClick={handleSubmit(onSubmit)} />
         </>

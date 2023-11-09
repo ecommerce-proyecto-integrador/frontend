@@ -1,14 +1,22 @@
-"use client"
+'use client';
 import React, { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useRouter } from "next/navigation";
+import  Heading  from '../product/Heading';
+import Input from '../input/Input';
+import { useForm, FieldValues, SubmitHandler } from 'react-hook-form';
+import Button from '../Button';
+import Link from 'next/link';
 
-
-function LoginForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [loginError, setLoginError] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const LoginForm: React.FC = () => {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const { register, formState: {errors}, handleSubmit } = useForm<FieldValues>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
   
 
   const loginMutation = gql`
@@ -20,66 +28,47 @@ function LoginForm() {
 
   const [loginUser] = useMutation(loginMutation);
 
-    const handleLogin = async () => {
-      try {
-        const { data } = await loginUser({
-          variables: {
-            loginInput: {
-              clave: password,
-              correo: email,
-            },
+  const handleLogin:SubmitHandler<FieldValues> = async (data) => {
+    /*try {
+      const { data } = await loginUser({
+        variables: {
+          loginInput: {
+            clave: password,
+            correo: email,
           },
-        });
-        const token = data.loginUsersTest;
-        if (token) {
-          console.log('Inicio de sesión exitoso');
-          await AsyncStorage.setItem('userToken', token);
-          
-          
-    
-          
-        } else {
-          setLoginError('Correo o contraseña inválidos.');
-        }
-      } catch (error) {
-        console.error('Error al iniciar sesión:', error);
-        setLoginError('Error al iniciar sesión. Inténtalo de nuevo.');
+        },
+      });
+      const token = data.loginUsersTest;
+      if (token) {
+        console.log('Inicio de sesión exitoso');
+        await AsyncStorage.setItem('userToken', token);
+        
+        
+  
+        
+      } else {
+        setLoginError('Correo o contraseña inválidos.');
       }
-    };
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+      setLoginError('Error al iniciar sesión. Inténtalo de nuevo.');
+    }*/
+  };
 
     return (
-      <div className="text-center">
-        {isLoggedIn ? (
-          <div>
-            <h2>¡Bienvenido!</h2>
-          </div>
-        ) : (
-          <div>
-            <h2>Login to MonoStore</h2>
-            <input
-              className="border border-gray-400 px-3 py-2 rounded-md mb-2"
-              type="email"
-              placeholder="Correo electrónico"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              className="border border-gray-400 px-3 py-2 rounded-md mb-2"
-              type="password"
-              placeholder="Contraseña"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button
-              className="bg-blue-500 text-white px-4 py-2 rounded-md"
-              onClick={handleLogin}
-            >
-              Log In
-            </button>
-            {loginError && <p className="text-red-500">{loginError}</p>}
-          </div>
-        )}
+      <>
+      <Heading title='Log in to MonoStore' />
+      <hr className='bg-slate-300 w-full h-px'/>
+      <Input id='email' label='Email' disabled={isLoading} register={register}
+      errors={errors} required/>
+      <Input id='password' label='Password' disabled={isLoading} register={register}
+      errors={errors} required type='password'/>
+      <Button label='Sign up' onClick={handleSubmit(handleLogin)} disabled={isLoading}/>
+      <div className='flex justify-between'>
+        <p className='mr-10'>Do not have an account?{" "}<Link className='underline' href='/pages/register'>Sign up</Link></p>
+        <p>Forgot your password?{" "}<Link className='underline' href='/pages/login/pass-recovery'>Reset password</Link></p>
       </div>
+    </>
     );
   }
   
