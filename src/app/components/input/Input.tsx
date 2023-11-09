@@ -12,12 +12,19 @@ interface InputProps {
     register: UseFormRegister<FieldValues>;
     errors: FieldErrors
     //icon?: React.ReactNode;
+    onChange?: (value: string) => void;
 }
 
-const Input: React.FC<InputProps> = ({id, label, type, disabled, required, register, errors}) => {
+const Input: React.FC<InputProps> = ({id, label, type, disabled, required, register, errors, onChange}) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value;
+        if (onChange) {
+          onChange(value); // Llamada a la función proporcionada por la prop
+        }
+      };
     return (
         <div className="w-full relative flex justify-between">
-            <input autoComplete="off" id={id} disabled={disabled} {...register(id, {required})} placeholder="" type={type}
+            <input autoComplete="off" id={id} disabled={disabled} {...register(id, {required})} placeholder="" type={type} onChange={handleChange}
             className={`peer w-full p-4 pt-6 outline-none bg-white font-light border-2 rounded-md transition disabled:opacity-70 disabled:cursor-not-allowed
             ${errors[id]? 'border-rose-400' : 'border-slate-400'}
             ${errors[id]? 'focus:border-rose-400' : 'focus:border-slate-400'}`} />

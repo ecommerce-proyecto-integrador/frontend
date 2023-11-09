@@ -11,6 +11,7 @@ interface RatingListProps {
 }
 
 const RatingList: React.FC<RatingListProps> = ({product}) => {
+    console.log("Product", product)
     return (
         <div>
             <Heading title="Product Review"/>

@@ -7,6 +7,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error";
+import { getCookie } from "cookies-next";
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
@@ -25,7 +26,7 @@ const httpLink = createHttpLink({
 const authLink = setContext(async (_, { headers }) => {
   // get the authentication token from local storage if it exists
   //Here logic to get token from local storage
-  const token = "sadasdasdas"; //change this
+  const token = getCookie("token"); //change this
 
   // return the headers to the context so httpLink can read them
   return {
@@ -37,8 +38,9 @@ const authLink = setContext(async (_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  link: from([errorLink, httpLink]),
+  link: from([errorLink, authLink.concat(httpLink)]),
   cache: new InMemoryCache(),
+  
 });
 
 export default client;

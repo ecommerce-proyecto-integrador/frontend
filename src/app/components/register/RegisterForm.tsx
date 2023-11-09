@@ -20,6 +20,23 @@ const RegisterForm: React.FC = () => {
     },
   });
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [userName, setUserName] = useState('');
+
+
+  const handleEmailChange = (value: string) => {
+    setEmail(value); // Actualiza el estado del correo electrónico
+  };
+
+  const handlePasswordChange = (value: string) => {
+    setPassword(value); // Actualiza el estado de la contraseña
+  };
+
+  const handleUserNameChange = (value: string) => {
+    setUserName(value); // Actualiza el estado de la contraseña
+  };
+
   const userMutation = gql`
     mutation createUsers($userInput: CreateUserInput!) {
       createUsers(userInput: $userInput)
@@ -31,7 +48,7 @@ const RegisterForm: React.FC = () => {
   const handleRegister:SubmitHandler<FieldValues> = async (data) => {
     setIsLoading(true);
     router.push("/");
-    /*try {
+    try {
       const { data } = await createUser({
         variables: {
           userInput: {
@@ -51,7 +68,7 @@ const RegisterForm: React.FC = () => {
     } catch (error) {
       console.error('Error al registrarse', error);
       
-    }*/
+    }
   };
  
 
@@ -60,11 +77,11 @@ const RegisterForm: React.FC = () => {
       <Heading title='Sign up for MonoStore' />
       <hr className='bg-slate-300 w-full h-px'/>
       <Input id='name' label='Name' disabled={isLoading} register={register}
-      errors={errors} required/>
+      errors={errors} required onChange={handleUserNameChange}/>
       <Input id='email' label='Email' disabled={isLoading} register={register}
-      errors={errors} required/>
+      errors={errors} required onChange={handleEmailChange}/>
       <Input id='password' label='Password' disabled={isLoading} register={register}
-      errors={errors} required type='password'/>
+      errors={errors} required type='password' onChange={handlePasswordChange}/>
       <Button label='Sign up' onClick={handleSubmit(handleRegister)} disabled={isLoading}/>
       <p>Already have an account? <Link className='underline' href='/pages/login'>Log in</Link></p>
     </>

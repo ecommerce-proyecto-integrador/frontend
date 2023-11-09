@@ -7,9 +7,13 @@ import Input from '../input/Input';
 import { useForm, FieldValues, SubmitHandler } from 'react-hook-form';
 import Button from '../Button';
 import Link from 'next/link';
+import { setCookie } from 'cookies-next';
 
 const LoginForm: React.FC = () => {
   const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { register, formState: {errors}, handleSubmit } = useForm<FieldValues>({
     defaultValues: {
@@ -17,6 +21,14 @@ const LoginForm: React.FC = () => {
       password: '',
     },
   });
+  const handleEmailChange = (value: string) => {
+    setEmail(value); // Actualiza el estado del correo electrónico
+  };
+
+  const handlePasswordChange = (value: string) => {
+    setPassword(value); // Actualiza el estado de la contraseña
+  };
+
   
 
   const loginMutation = gql`
@@ -29,7 +41,7 @@ const LoginForm: React.FC = () => {
   const [loginUser] = useMutation(loginMutation);
 
   const handleLogin:SubmitHandler<FieldValues> = async (data) => {
-    /*try {
+    try {
       const { data } = await loginUser({
         variables: {
           loginInput: {
@@ -41,9 +53,9 @@ const LoginForm: React.FC = () => {
       const token = data.loginUsersTest;
       if (token) {
         console.log('Inicio de sesión exitoso');
-        await AsyncStorage.setItem('userToken', token);
-        
-        
+      
+      setCookie("token", token)
+      router.push('../../');
   
         
       } else {
@@ -52,7 +64,7 @@ const LoginForm: React.FC = () => {
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
       setLoginError('Error al iniciar sesión. Inténtalo de nuevo.');
-    }*/
+    }
   };
 
     return (
@@ -60,10 +72,11 @@ const LoginForm: React.FC = () => {
       <Heading title='Log in to MonoStore' />
       <hr className='bg-slate-300 w-full h-px'/>
       <Input id='email' label='Email' disabled={isLoading} register={register}
-      errors={errors} required/>
+      errors={errors} required onChange={handleEmailChange}/>
       <Input id='password' label='Password' disabled={isLoading} register={register}
-      errors={errors} required type='password'/>
-      <Button label='Sign up' onClick={handleSubmit(handleLogin)} disabled={isLoading}/>
+      errors={errors} required type='password' onChange={handlePasswordChange}/>
+      <Button label='Log in' onClick={handleSubmit(handleLogin)} disabled={isLoading}/>
+      {loginError && <p className="text-red-500">{loginError}</p>}
       <div className='flex justify-between'>
         <p className='mr-10'>Do not have an account?{" "}<Link className='underline' href='/pages/register'>Sign up</Link></p>
         <p>Forgot your password?{" "}<Link className='underline' href='/pages/login/pass-recovery'>Reset password</Link></p>
