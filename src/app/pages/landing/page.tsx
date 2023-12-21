@@ -15,10 +15,6 @@ const Landing: React.FC = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegistrationOpen, setIsRegistrationOpen]=useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
-
-
-
 
     return (
       <div>
