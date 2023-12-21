@@ -148,6 +148,7 @@ const LoggedInCheckoutForm: React.FC = () => {
     useEffect(() => {
       setComunas(regionsAndComunas[selectedRegion] || []);
     }, [selectedRegion]);
+    
   }
 
     return (
@@ -182,7 +183,7 @@ const LoggedInCheckoutForm: React.FC = () => {
         onChange={(e) => setComuna(e.target.value)}
         disabled={!selectedRegion}
       >
-        <option value="">Select a Comuna</option>
+        <option value={comunas}>Select a Comuna</option>
         {comunas.map((comuna) => (
           <option key={comuna} value={comuna}>{comuna}</option>
         ))}
