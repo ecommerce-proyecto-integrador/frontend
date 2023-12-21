@@ -8,7 +8,7 @@ interface CartProviderProps {
 
 const CartProvider: React.FC<CartProviderProps> = ({children}) => {
     return (
-        <CartContextProvider>{children}</CartContextProvider>
+        <CartContextProvider suppressHydrationWarning={true}>{children}</CartContextProvider>
     )
 }
 

@@ -10,9 +10,10 @@ const CartCount = () => {
     <div
       onClick={() => router.push("/pages/cart")}
       className="relative cursor-pointer transition hover:scale-105"
+      suppressHydrationWarning={true}
     >
-      <div className="text-3xl outline-slate-200">
-        <IoCartOutline />
+      <div className="text-3xl outline-slate-200" suppressHydrationWarning={true}>
+        <IoCartOutline suppressHydrationWarning={true}/>
       </div>
       <span className="absolute top-[-12px] right-[-12px] bg-slate-700 text-white h-6 w-6 rounded-full flex items-center justify-center text-sm">
         {cartTotalQuantity}
