@@ -8,7 +8,7 @@ import Button from "../Button";
 import ItemContent from "./ItemContent";
 import { formatPrice } from "../../../../utils/formatPrice";
 import { getCookie } from "cookies-next";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const CartClient = () => {
     const {cartProducts, handleClearCart, cartTotalAmount} = useCart();

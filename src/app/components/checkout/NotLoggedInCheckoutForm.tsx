@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
 import { useRouter } from "next/navigation";
 import  Heading  from '../product/Heading';
@@ -7,9 +7,8 @@ import Input from '../input/Input';
 import { useForm, FieldValues, SubmitHandler } from 'react-hook-form';
 import Button from '../Button';
 import Link from 'next/link';
-import { setCookie } from 'cookies-next';
-import { useQuery } from '@apollo/client';
-import client from '../../apolloClient';
+import { setCookie, getCookie } from 'cookies-next';
+
 
 const NotLoggedInCheckoutForm: React.FC = () => {
   const router = useRouter();
@@ -24,32 +23,32 @@ const NotLoggedInCheckoutForm: React.FC = () => {
   const [floorOrDepartment, setFloorOrDepartment] = useState('');
   const [loginError, setLoginError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const token = getCookie("token");
   const { register, formState: {errors}, handleSubmit } = useForm<FieldValues>({
     defaultValues: {
+      email: '',
+      password: '',
+      name: '',
+      rut: '',
       region: '',
       comuna: '',
       address: '',
+      phone: '',
       floorOrDepartment: '',
     },
   });
 
-  const showInfo_q = gql`
-    query showInfo {
-      showInfo
-      }`;
+  const handleEmailChange = (value: string) => {
+    setEmail(value); // Actualiza el estado del correo electrónico
+  };
 
-    const { loading, error, data } = useQuery(showInfo_q, {client: client});
+  const handleNameChange = (value: string) => {
+    setName(value); // Actualiza el estado del nombre
+  };
 
-    useEffect(() => {
-      if (!loading && !error && data) {
-        console.log("Data", data.showInfo);
-        const json = JSON.parse(data.showInfo);
-        setName(json.nombre);
-        setEmail(json.correo);
-        setRut(json.rut);
-        setPhone(json.phone);
-      }
-    }, [loading, error, data]);
+  const handleRutChange = (value: string) => {
+    setRut(value); // Actualiza el estado del rut
+  };
 
   const handleRegionChange = (value: string) => {
     setRegion(value); // Actualiza el estado de la región
@@ -61,6 +60,10 @@ const NotLoggedInCheckoutForm: React.FC = () => {
 
   const handleAddressChange = (value: string) => {
     setAddress(value); // Actualiza el estado de la dirección
+  };
+
+  const handlePhoneChange = (value: string) => {
+    setPhone(value); // Actualiza el estado del teléfono
   };
 
   const handleFloorOrDepartmentChange = (value: string) => {
@@ -75,19 +78,13 @@ const NotLoggedInCheckoutForm: React.FC = () => {
       <>
       <Heading title='Checkout' />
       <hr className='bg-slate-300 w-full h-px'/>
-      <div className='flex-row justify-center'>
-        <h2 className='text-xl font-bold'>Personal Information</h2>
-        <p>Name: {name}</p>
-        <p>Email: {email}</p>
-      </div>
-      <div className='flex-row justify-center'>
-        <h2 className='text-xl font-bold'>Personal Information</h2>
-        <p>Phone: {phone}</p>
-        <p>Rut: {rut}</p>
-      </div>
+      <Input id='email' label='Email' disabled={isLoading} register={register} errors={errors} required onChange={handleEmailChange}/>
+      <Input id='name' label='Name' disabled={isLoading} register={register} errors={errors} required onChange={handleNameChange}/>
+      <Input id='rut' label='Rut' disabled={isLoading} register={register} errors={errors} required onChange={handleRutChange}/>
       <Input id='region' label='Region' disabled={isLoading} register={register} errors={errors} required onChange={handleRegionChange}/>
       <Input id='comuna' label='Comuna' disabled={isLoading} register={register} errors={errors} required onChange={handleComunaChange}/>
       <Input id='address' label='Address' disabled={isLoading} register={register} errors={errors} required onChange={handleAddressChange}/>
+      <Input id='phone' label='Phone' disabled={isLoading} register={register} errors={errors} required onChange={handlePhoneChange}/>
       <Input id='floorOrDepartment' label='Floor or Department' disabled={isLoading} register={register} errors={errors} required onChange={handleFloorOrDepartmentChange}/>
       <hr className='bg-slate-300 w-full h-px'/>
 
