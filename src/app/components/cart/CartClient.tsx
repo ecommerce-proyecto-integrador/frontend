@@ -17,7 +17,7 @@ const CartClient = () => {
     const navigateToCheckout = () => {
         const token = getCookie("token");
         if (token) {
-            router.push('/pages/checkout/logged');
+            router.push('/pages/checkout/logged' );
         } else {
             router.push('/pages/checkout/not-logged');
         }
