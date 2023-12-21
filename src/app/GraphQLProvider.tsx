@@ -10,7 +10,7 @@ const GraphQlProvider: React.FC<IGraphQlProviderProps> = ({
     children
 }) => {
     return (
-        <ApolloProvider client={client} children={undefined}>
+        <ApolloProvider client={client}>
             {children}
         </ApolloProvider>
 
