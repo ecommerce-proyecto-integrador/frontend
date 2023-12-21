@@ -24,7 +24,8 @@ export type CartProductType = {
     selectedImg: SelectedImgType,
     size: string,
     quantity: number,
-    price: number
+    price: number,
+    stock: number
 }
 
 export type SelectedImgType = {
@@ -64,7 +65,8 @@ const ProductDetails:React.FC<ProductDetailsProps> = ({product}) => {
         size: product.sizeAvailable[0],
         selectedImg: {...product.images[0]},
         quantity: 1,
-        price: product.price
+        price: product.price,
+        stock: product.stock
     });
     console.log("Stock", product.inStock);
     useEffect(() => {
