@@ -41,8 +41,8 @@ const Products: React.FC = () => {
       const json = JSON.parse(data.getProducts)
       setProducts(json);
 
-      const uniqueCategories = Array.from(new Set(json.map(product  => product.Category)));
-      const uniqueBrands = Array.from(new Set(json.map(product  => product.brand)));
+      const uniqueCategories: string[] = Array.from(new Set(json.map((product: { Category: string; })  => product.Category)));
+      const uniqueBrands: string[] = Array.from(new Set(json.map((product: { brand: string; })  => product.brand)));
       
       console.log("UniqueCategories", uniqueCategories)
       console.log("UniqueBrands", uniqueBrands)
