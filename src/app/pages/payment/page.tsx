@@ -5,11 +5,12 @@ import { useSearchParams } from "next/navigation";
 import { gql, useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
 import client from "../../apolloClient";
+import { useCart } from "../../../../hooks/useCart";
 
 const Payment = () => {
   const [message, setMessage] = useState(null);
   const searchParams = useSearchParams();
-
+  //const { cartProducts, handleClearCart, cartTotalAmount } = useCart();
   const commit_pay = gql`
     mutation commitPay($commitPayInput: commitPayInput!) {
       commitPay(commitPayInput: $commitPayInput)
@@ -31,6 +32,9 @@ const Payment = () => {
       const json = JSON.parse(data.commitPay);
       console.log(json);
       setMessage(json);
+      if (json.status === "AUTHORIZED") {
+        //handleClearCart();
+      }
     } catch (error) {
       console.log("Error", error);
     }
@@ -49,14 +53,13 @@ const Payment = () => {
 
   return (
     <Container>
-      
       <FormWrap>
-      <h1 className="text-2xl font-semibold text-gray-700">Payment</h1>
-      {message?.status === "AUTHORIZED" ? (
-        <p className={statusStyle}>Succesfull Transaction</p>
-      ) : (
-        <p className={statusStyle}>Failed Transaction</p>
-      )}
+        <h1 className="text-2xl font-semibold text-gray-700">Payment</h1>
+        {message?.status === "AUTHORIZED" ? (
+          <p className={statusStyle}>Succesfull Transaction</p>
+        ) : (
+          <p className={statusStyle}>Failed Transaction</p>
+        )}
         {message && (
           <div className="bg-white shadow-md rounded-lg p-6 my-4">
             {Object.entries(message).map(([key, value]) => {

@@ -117,7 +117,6 @@ const LoggedInCheckoutForm: React.FC = () => {
     }
     catch (error) {
       console.error('Error al crear el pago:', error);
-      setLoginError('Error al crear el pago. Inténtalo de nuevo.');
     }
 
     

@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
         <Container>
           <div className="flex items-center justify-between gap-3 md-gap-0">
             <div className="flex items-center gap-2">
-              <Image src="/logo.png" width={30} height={40} alt="logo" className="rounded-full"/>
+              <Image src="/logo.jpg" width={30} height={40} alt="logo" className="rounded-full"/>
               <Link href="/" className="font-bold text-2xl">MonoStore</Link>
             </div>
             <div className="flex items-center gap-8 md:gap-12">
