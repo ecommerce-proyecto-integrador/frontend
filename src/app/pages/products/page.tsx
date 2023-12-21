@@ -9,7 +9,7 @@ const ProductsPage: React.FC = () => {
   const product = [products];
 
   return (
-    <GraphQlProvider children={undefined}>
+    <GraphQlProvider>
       <Container>
         <Products />
       </Container>

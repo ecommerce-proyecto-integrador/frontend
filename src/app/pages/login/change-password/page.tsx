@@ -5,7 +5,7 @@ import GraphQlProvider from "../../../GraphQLProvider";
 
 const ChangePasswordPage = () => {
   return (
-    <GraphQlProvider children={undefined}>
+    <GraphQlProvider>
       <Container>
         <FormWrap>
           <ChangePasswordForm />

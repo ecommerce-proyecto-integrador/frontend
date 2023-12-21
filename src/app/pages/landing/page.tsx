@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import landindImage from "../../../../public/landing-img.jpg";
+//import landindImage from "../../../../public/landing-img.jpg";
 import RegistrationForm from '../../components/Registration';
 
 import Link from 'next/link';
@@ -24,7 +24,7 @@ const Landing: React.FC = () => {
       <div>
       <section
         className="h-screen w-screen flex justify-center items-center bg-cover bg-center object-contain"
-        style={{ backgroundImage: `url('${landindImage.src}')` }}
+        style={{ backgroundImage: `url('/landing-img.jpg')` }}
       >
         <div className="mt-16 h-screen w-full absolute top-0 left-0 flex justify-center items-center bg-gray-900 bg-opacity-80">
           <div className="container mx-auto flex flex-col md:flex-row items-center justify-between text-white">

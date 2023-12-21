@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Container from "../Container";
 import Image from "next/image";
-import logo from "../../../../public/logo.jpg";
+//import logo from "../../../../public/logo.png";
 import CartCount from "./CartCount";
 import { CgProfile } from "react-icons/cg";
 import { useRouter } from "next/navigation";
@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
             <Container>
               <div className="flex items-center justify-between gap-3 md-gap-0">
                 <div className="flex items-center gap-2">
-                  <Image src={logo} width={30} height={40} alt="logo" className="rounded-full"/>
+                  <Image src="/logo.png" width={30} height={40} alt="logo" className="rounded-full"/>
                   <Link href="/" className="font-bold text-2xl">MonoStore</Link>
                 </div>
                 <div className="flex items-center gap-8 md:gap-12">

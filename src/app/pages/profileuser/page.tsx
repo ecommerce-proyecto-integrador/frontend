@@ -43,12 +43,12 @@ const ProfileUser: React.FC = () => {
   return (
     <section
       className="h-screen w-screen flex justify-center items-center bg-cover bg-center object-contain "
-      style={{ backgroundImage: `url('${landindImage.src}')` }}
+      style={{ backgroundImage: `url('landing-img.jpg')` }}
     >
       <div className="mt-16 h-screen w-full absolute top-0 left-0 flex justify-center items-center bg-gray-900 bg-opacity-80">
         <div className="text-white absolute top-4 left-4 md:top-6 md:left-6 z-10 ">
           <Image
-            src={MonoPerfil}
+            src='/monoperfil.jpg'
             width={100}
             height={400}
             alt="logo"
@@ -75,7 +75,7 @@ const ProfileUser: React.FC = () => {
               >
                 Close
               </button>
-              <GraphQlProvider children={undefined}>
+              <GraphQlProvider>
                 <ChangePasswordForm />
               </GraphQlProvider>
             </div>

@@ -5,7 +5,7 @@ import GraphQlProvider from "../../GraphQLProvider";
 
 const Register = () => {
   return (
-    <GraphQlProvider children={undefined}>
+    <GraphQlProvider>
       <Container>
         <FormWrap>
           <RegisterForm />

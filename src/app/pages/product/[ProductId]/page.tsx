@@ -63,7 +63,7 @@ const ProductDinamic = ({ params }: { params: ProductDinamicProps }) => {
   console.log("aaa", Product);
 
   return (
-    <GraphQlProvider children={undefined}>
+    <GraphQlProvider>
       <div className="p-8">
         <Container>
           {Product ? (

@@ -7,9 +7,21 @@ import Heading from "../product/Heading";
 import Button from "../Button";
 import ItemContent from "./ItemContent";
 import { formatPrice } from "../../../../utils/formatPrice";
+import { getCookie } from "cookies-next";
+import { useRouter } from "next/router";
 
 const CartClient = () => {
-    const {cartProducts, handleClearCart, cartTotalAmount} = useCart(); 
+    const {cartProducts, handleClearCart, cartTotalAmount} = useCart();
+    const router = useRouter();
+
+    const navigateToCheckout = () => {
+        const token = getCookie("token");
+        if (token) {
+            router.push('/pages/checkout/logged');
+        } else {
+            router.push('/pages/checkout/not-logged');
+        }
+    }
 
     if(!cartProducts || cartProducts.length === 0){
         return (
@@ -50,7 +62,7 @@ const CartClient = () => {
                         <span>{formatPrice(cartTotalAmount)}</span>
                     </div>
                     <p className="text-slate-500">Shipping amount calculated at checkout</p>
-                    <Button label="Checkout" onClick={() => {}}/>
+                    <Button label="Checkout" onClick={navigateToCheckout}/>
                     <Link href={"/pages/products"} className="text-slate-500 flex items-center gap-1 mt-2">
                         <MdArrowBack/>
                         <span>Continue Shopping</span>

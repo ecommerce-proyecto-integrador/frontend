@@ -5,7 +5,7 @@ import GraphQlProvider from '../../GraphQLProvider';
 
 const LoginLab: React.FC = () => {
     return (
-        <GraphQlProvider  children={undefined}  >
+        <GraphQlProvider>
             <Container>
                 <FormWrap>
                     <LoginForm />            

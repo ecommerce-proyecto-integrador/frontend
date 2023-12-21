@@ -71,7 +71,7 @@ const LoggedInCheckoutForm: React.FC = () => {
   };
 
   const handlePayment = () => {
-    router.push('/pages/checkout/payment');
+    router.push('/pages/payment');
   }
 
     return (
@@ -88,7 +88,7 @@ const LoggedInCheckoutForm: React.FC = () => {
       <Input id='floorOrDepartment' label='Floor or Department' disabled={isLoading} register={register} errors={errors} required onChange={handleFloorOrDepartmentChange}/>
       <hr className='bg-slate-300 w-full h-px'/>
 
-      <Button label='Payment' onClick={handlePayment} disabled={isLoading}/>
+      <Button label='Payment' onClick={handleSubmit(handlePayment)} disabled={isLoading}/>
 
     </>
     );
