@@ -1,7 +1,7 @@
 import Container from "@/app/components/Container";
 import FormWrap from "@/app/components/FormWrap";
 import GraphQlProvider from "@/app/GraphQLProvider";
-import NotLoggedInCheckoutForm from "@/app/components/checkout/LoggedInCheckout";
+import NotLoggedInCheckoutForm from "@/app/components/checkout/NotLoggedInCheckoutForm";
 
 const Checkout: React.FC = () => {
     return (
