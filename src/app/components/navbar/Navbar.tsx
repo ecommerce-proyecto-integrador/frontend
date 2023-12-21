@@ -23,9 +23,11 @@ const Navbar: React.FC = () => {
             </div>
             <div className="flex items-center gap-8 md:gap-12">
               {token && (
+                <>
                 <div onClick={() => router.push('/pages/profileuser')} className="relative cursor-pointer transition hover:scale-105" suppressHydrationWarning={true}>
                   <CgProfile size={30}/>
                 </div>
+                </>
               )}
               <div><CartCount /></div>
             </div>
