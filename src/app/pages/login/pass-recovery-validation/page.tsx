@@ -5,7 +5,7 @@ import GraphQlProvider from "../../../GraphQLProvider";
 
 const PasswordRecoveryValidationPage = () => {
   return (
-    <GraphQlProvider children={undefined}>
+    <GraphQlProvider>
       <Container>
         <FormWrap>
           <ValidationForm />
