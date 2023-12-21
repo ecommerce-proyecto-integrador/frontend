@@ -47,7 +47,7 @@ const Payment = () => {
     }
   }, []);
   const statusStyle =
-    message?.status === "AUTHORIZED"
+    message && (message as { status: string }).status === "AUTHORIZED"
       ? "text-green-600 font-semibold"
       : "text-red-600 font-semibold";
 
@@ -55,7 +55,7 @@ const Payment = () => {
     <Container>
       <FormWrap>
         <h1 className="text-2xl font-semibold text-gray-700">Payment</h1>
-        {message?.status === "AUTHORIZED" ? (
+        {message && (message as { status: string }).status === "AUTHORIZED" ? (
           <p className={statusStyle}>Succesfull Transaction</p>
         ) : (
           <p className={statusStyle}>Failed Transaction</p>
@@ -72,7 +72,7 @@ const Payment = () => {
                   <span
                     className={key === "status" ? statusStyle : "text-gray-600"}
                   >
-                    {key === "card_detail" ? JSON.stringify(value) : value}
+                    {key === "card_detail" ? JSON.stringify(value) : value as React.ReactNode}
                   </span>
                 </div>
               );
