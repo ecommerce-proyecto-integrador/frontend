@@ -24,6 +24,7 @@ type Product = {
   image: string;
   reviews: string[];
   Category: string;
+  stock: number;
 };
 
 const ProductDinamic = ({ params }: { params: ProductDinamicProps }) => {

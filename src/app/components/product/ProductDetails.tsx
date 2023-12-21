@@ -90,7 +90,7 @@ const ProductDetails:React.FC<ProductDetailsProps> = ({product}) => {
     }, [cartProduct.selectedImg])
 
     const handleQuantityIncrease = useCallback(() => {
-        if(cartProduct.quantity === 99) return;
+        if(cartProduct.quantity === product.stock) return;
 
         setCartProduct((prev) => {
             return { ...prev, quantity: prev.quantity + 1};});
@@ -123,7 +123,7 @@ const ProductDetails:React.FC<ProductDetailsProps> = ({product}) => {
                 <span className="font-bold">BRAND: </span>
                 {product.brand}
             </div>
-        <div className= {product.inStock ? 'text-teal-400 font-semibold :' : 'text-rose-400 font-semibold'}>{product.inStock ? 'In stock' : 'Out stock'}</div>
+        <div className= {product.stock > 0 ? 'text-teal-400 font-semibold :' : 'text-rose-400 font-semibold'}><p>Stock: {product.stock}</p></div>
         <HorizontalLine/>
             {/*{isProductInCart ? <>
                 <p className="mb-2 text-slate-500 flex items-center gap-1">
