@@ -25,7 +25,7 @@ jobs:
 
       - name: Build and test
         run: |
-          npm run build  
+          npm run dev
           npm test -- --passWithNoTests
 
       - name: Deploy to Docker Hub
