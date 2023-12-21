@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
               <Link href="/" className="font-bold text-2xl">MonoStore</Link>
             </div>
             <div className="flex items-center gap-8 md:gap-12">
-              {!token && (
+              {token && (
                 <div onClick={() => router.push('/pages/profileuser')} className="relative cursor-pointer transition hover:scale-105" suppressHydrationWarning={true}>
                   <CgProfile size={30}/>
                 </div>
