@@ -4,8 +4,8 @@ import ChangePasswordForm from "@/app/components/pass-recovery/ChangePasswordFor
 import GraphQlProvider from "../../GraphQLProvider";
 import Link from "next/link";
 import Image from "next/image";
-import MonoPerfil from "../../../../public/monoperfil.jpg";
-import landindImage from "../../../../public/landing-img.jpg";
+//import MonoPerfil from "../../../../public/monoperfil.jpg";
+//import landindImage from "../../../../public/landing-img.jpg";
 import { gql, useQuery } from "@apollo/client";
 import client from "../../apolloClient"
 import { useRouter } from "next/navigation";
