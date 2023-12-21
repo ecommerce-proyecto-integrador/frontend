@@ -55,12 +55,22 @@ const Payment = () => {
     <Container >
       <FormWrap >
         <h1 className="text-2xl font-semibold text-gray-700">Payment</h1>
-        {message && (message as { status: string }).status === "AUTHORIZED" ? (
+        <div>
+        {/*message && (message as { status: string }).status === "AUTHORIZED" ? (
           <p className={statusStyle} suppressHydrationWarning={true}>Succesfull Transaction</p>
         ) : (
           <p className={statusStyle} suppressHydrationWarning={true}>Failed Transaction</p>
-        )}
-        {message && (
+        )*/}
+        {message ? (
+          (message as { status: string }).status === "AUTHORIZED" ? (
+            <p className={statusStyle} suppressHydrationWarning={true}>Succesfull Transaction</p>
+          ) : (
+            <p className={statusStyle} suppressHydrationWarning={true}>Failed Transaction</p>
+          )
+
+        ):(<></>)}
+        </div>
+        {message ? (
           <div className="bg-white shadow-md rounded-lg p-6 my-4">
             {Object.entries(message).map(([key, value]) => {
               return (
@@ -78,7 +88,7 @@ const Payment = () => {
               );
             })}
           </div>
-        )}
+        ) : (<><p>Loading...</p></>)}
       </FormWrap>
     </Container>
   );

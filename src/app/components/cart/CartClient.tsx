@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 const CartClient = () => {
     const {cartProducts, handleClearCart, cartTotalAmount} = useCart();
     const router = useRouter();
+    console.log(cartProducts)
 
     const navigateToCheckout = () => {
         const token = getCookie("token");

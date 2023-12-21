@@ -20,7 +20,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 const httpLink = createHttpLink({
-  uri: "http://192.168.1.82:4000/graphql", // <-- Add the URL of the GraphQL server here 192.168.1.82:4000
+  uri: "http://192.168.208.1:4000/graphql", // <-- Add the URL of the GraphQL server here 192.168.1.82:4000
 });
 
 const authLink = setContext(async (_, { headers }) => {

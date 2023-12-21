@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useMutation, gql } from "@apollo/client";
 import { useRouter } from "next/navigation";
 import Heading from "../product/Heading";
@@ -520,6 +520,7 @@ const NotLoggedInCheckoutForm: React.FC = () => {
             session_id: generarSessionId(),
             monto: cartTotalAmount,
             return_url: "http://localhost:3001/pages/payment",
+            cart: cartProducts?.map(product => product.id.toString()) || [],
           },
         },
       });
@@ -530,6 +531,11 @@ const NotLoggedInCheckoutForm: React.FC = () => {
       setLoginError("Error al crear el pago. Inténtalo de nuevo.");
     }
   };
+
+  useEffect(() => {
+    setComunas(regionsAndComunas[selectedRegion] || []);
+  }, [selectedRegion]);
+
   return (
     <>
       <Heading title="Checkout" />

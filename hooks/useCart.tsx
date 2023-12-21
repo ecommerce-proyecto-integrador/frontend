@@ -56,20 +56,28 @@ export const CartContextProvider = (props: Props) => {
     }, [cartProducts]);
 
     const handleAddProductToCart = useCallback((product: CartProductType) => {
-        setCartProducts((prev) => {
-            let updatedCart;
+        if (product.stock > 0) {
+            setCartProducts((prev) => {
+                let updatedCart;
+    
+                if(prev){
+                    updatedCart = [...prev, product];
+                } else {
+                    updatedCart = [product];
+                }
+    
+                toast.success('Product added to cart')
+                localStorage.setItem("MonoStoreItems", JSON.stringify(updatedCart));
+    
+                return updatedCart;
+            })
 
-            if(prev){
-                updatedCart = [...prev, product];
-            } else {
-                updatedCart = [product];
-            }
-
-            toast.success('Product added to cart')
-            localStorage.setItem("MonoStoreItems", JSON.stringify(updatedCart));
-
-            return updatedCart;
-        })
+        }
+        else
+        {
+            toast.success('Product without stock')
+        }
+        
     }, []); 
 
     const handleRemoveProductFromCart = useCallback((product: CartProductType) => {

@@ -123,7 +123,7 @@ const LoggedInCheckoutForm: React.FC = () => {
     mutation paycreated($createPayInputnput: CreatePayInput!) {
       paycreated(createPayInputnput: $createPayInputnput)
       }`;
-
+console.log(cartProducts?.map(product => product.id))
   const [createPay] = useMutation(create_pay, {client: client});
   const handlePayment = async () => {
     try {
@@ -134,6 +134,7 @@ const LoggedInCheckoutForm: React.FC = () => {
             session_id: generarSessionId(),
             monto: cartTotalAmount,
             return_url: "http://localhost:3001/pages/payment",
+            cart: cartProducts?.map(product => product.id.toString()) || [],
           },
         },
       });
@@ -144,12 +145,12 @@ const LoggedInCheckoutForm: React.FC = () => {
       console.error('Error al crear el pago:', error);
       setLoginError('Error al crear el pago. Inténtalo de nuevo.');
     }
-
-    useEffect(() => {
-      setComunas(regionsAndComunas[selectedRegion] || []);
-    }, [selectedRegion]);
     
   }
+
+  useEffect(() => {
+    setComunas(regionsAndComunas[selectedRegion] || []);
+  }, [selectedRegion]);
 
     return (
       <>
