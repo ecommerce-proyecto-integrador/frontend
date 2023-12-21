@@ -10,6 +10,31 @@ import Link from 'next/link';
 import { setCookie } from 'cookies-next';
 import { useQuery } from '@apollo/client';
 import client from '../../apolloClient';
+import { useCart } from '../../../../hooks/useCart';
+import { on } from 'events';
+
+function generarNumeroOrdenCompra(): string {
+  const fechaActual = new Date();
+  const year = fechaActual.getFullYear().toString().slice(2);
+  const month = (fechaActual.getMonth() + 1).toString().padStart(2, '0');
+  const day = fechaActual.getDate().toString().padStart(2, '0');
+
+  const numeroAleatorio = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+
+  const numeroOrdenCompra = `OC${year}${month}${day}${numeroAleatorio}`;
+
+  return numeroOrdenCompra;
+}
+
+function generarSessionId(): number {
+  const fechaActual = new Date();
+  const timestamp = fechaActual.getTime().toString();
+  const aleatorio = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+
+  const sessionId = parseInt(`1${timestamp}${aleatorio}`); // Agregamos "1" al principio para asegurar que empiece con un número diferente de cero.
+
+  return sessionId;
+}
 
 const LoggedInCheckoutForm: React.FC = () => {
   const router = useRouter();
@@ -24,6 +49,8 @@ const LoggedInCheckoutForm: React.FC = () => {
   const [floorOrDepartment, setFloorOrDepartment] = useState('');
   const [loginError, setLoginError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const {cartProducts, handleClearCart, cartTotalAmount} = useCart();
+
   const { register, formState: {errors}, handleSubmit } = useForm<FieldValues>({
     defaultValues: {
       region: '',
@@ -67,8 +94,34 @@ const LoggedInCheckoutForm: React.FC = () => {
     setFloorOrDepartment(value); // Actualiza el estado del piso o departamento
   };
 
-  const handlePayment = () => {
-    router.push('/pages/payment');
+  const create_pay = gql`
+    mutation paycreated($createPayInputnput: CreatePayInput!) {
+      paycreated(createPayInputnput: $createPayInputnput)
+      }`;
+
+  const [createPay] = useMutation(create_pay, {client: client});
+  const handlePayment = async () => {
+    try {
+      const { data } = await createPay({
+        variables: {
+          createPayInputnput: {
+            orden_compra: generarNumeroOrdenCompra(),
+            session_id: generarSessionId(),
+            monto: cartTotalAmount,
+            return_url: "http://localhost:3001/pages/payment",
+          },
+        },
+      });
+      const url = data.paycreated;
+      router.push(url);
+    }
+    catch (error) {
+      console.error('Error al crear el pago:', error);
+      setLoginError('Error al crear el pago. Inténtalo de nuevo.');
+    }
+
+    
+    
   }
 
     return (
